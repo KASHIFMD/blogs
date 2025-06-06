@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://jalammar.github.io/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="1rke4cm" data-token-hash="21mfza">:where(.css-1x0dypw) a{color:#1677ff;text-decoration:none;background-color:transparent;outline:none;cursor:pointer;transition:color 0.3s;-webkit-text-decoration-skip:objects;}:where(.css-1x0dypw) a:hover{color:#69b1ff;}:where(.css-1x0dypw) a:active{color:#0958d9;}:where(.css-1x0dypw) a:active,:where(.css-1x0dypw) a:hover{text-decoration:none;outline:0;}:where(.css-1x0dypw) a:focus{text-decoration:none;outline:0;}:where(.css-1x0dypw) a[disabled]{color:rgba(0, 0, 0, 0.25);cursor:not-allowed;}</style><style data-rc-order="prependQueue" data-rc-priority="-999" data-css-hash="7k4303" data-token-hash="21mfza">:where(.css-1x0dypw).ant-app{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';font-size:14px;box-sizing:border-box;}:where(.css-1x0dypw).ant-app::before,:where(.css-1x0dypw).ant-app::after{box-sizing:border-box;}:where(.css-1x0dypw).ant-app [class^="ant-app"],:where(.css-1x0dypw).ant-app [class*=" ant-app"]{box-sizing:border-box;}:where(.css-1x0dypw).ant-app [class^="ant-app"]::before,:where(.css-1x0dypw).ant-app [class*=" ant-app"]::before,:where(.css-1x0dypw).ant-app [class^="ant-app"]::after,:where(.css-1x0dypw).ant-app [class*=" ant-app"]::after{box-sizing:border-box;}:where(.css-1x0dypw).ant-app{color:rgba(0, 0, 0, 0.88);font-size:14px;line-height:1.5714285714285714;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';}:where(.css-1x0dypw).ant-app.ant-app-rtl{direction:rtl;}</style><style data-rc-order="prependQueue" data-css-hash="139pitw" data-token-hash="21mfza">.anticon{display:inline-flex;align-items:center;color:inherit;font-style:normal;line-height:0;text-align:center;text-transform:none;vertical-align:-0.125em;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}.anticon >*{line-height:1;}.anticon svg{display:inline-block;}.anticon .anticon .anticon-icon{display:block;}</style>
+    <title>Jay Alammar – Visualizing machine learning one concept at a time.</title>
+
+        
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    
+    <meta name="description" content="Visualizing machine learning one concept at a time.">
+    <meta property="og:description" content="Visualizing machine learning one concept at a time.">
+    
+    <meta name="author" content="Jay Alammar">
+
+    
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <script src="./Mohammed Kashif – Learn concepts from first principles._files/jquery-3.1.1.slim.min.js"></script>
+    <script type="text/javascript" src="./Mohammed Kashif – Learn concepts from first principles._files/d3.min.js"></script>
+    <script type="text/javascript" src="./Mohammed Kashif – Learn concepts from first principles._files/d3-selection-multi.v0.4.min.js"></script>
+    <script type="text/javascript" src="./Mohammed Kashif – Learn concepts from first principles._files/d3-jetpack.js"></script>
+
+    <link rel="stylesheet" href="./Mohammed Kashif – Learn concepts from first principles._files/bootstrap.min.css">
+    <link rel="stylesheet" href="./Mohammed Kashif – Learn concepts from first principles._files/bootstrap-theme.min.css">
+    <script src="./Mohammed Kashif – Learn concepts from first principles._files/bootstrap.min.js"> </script>
+
+    <link rel="stylesheet" type="text/css" href="./Mohammed Kashif – Learn concepts from first principles._files/gifplayer.css">
+    <script type="text/javascript" src="./Mohammed Kashif – Learn concepts from first principles._files/jquery.gifplayer.js"></script>
+
+    <!--
+    <script data-main="scripts/main" src="scripts/require.js"></script>
+    -->
+    <link rel="stylesheet" href="./Mohammed Kashif – Learn concepts from first principles._files/katex.min.css" integrity="sha384-wE+lCONuEo/QSfLb4AfrSk7HjWJtc4Xc1OiB2/aDBzHzjnlBP4SX7vjErTcwlA8C" crossorigin="anonymous">
+    <script src="./Mohammed Kashif – Learn concepts from first principles._files/katex.min.js" integrity="sha384-tdtuPw3yx/rnUGmnLNWXtfjb9fpmwexsd+lr6HUYnUY4B7JhB5Ty7a1mYd+kto/s" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="./Mohammed Kashif – Learn concepts from first principles._files/style.css">
+    <link rel="alternate" type="application/rss+xml" title="Jay Alammar - Visualizing machine learning one concept at a time." href="https://jalammar.github.io/feed.xml">
+
+    <meta name="viewport" content="width=device-width">
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+
+    <!-- Piwik -->
+    <!-- Piwik
+    <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(["setDomains", ["*.example.org"]]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+            var u="https://a.jalammar.com/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', '1']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+    </script>
+    <noscript><p><img src="https://a.jalammar.com/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>-->
+    <!-- End Piwik Code -->
+
+    <!-- End Piwik Code -->
+  <style>body{margin:0px}.lkdin_ext_container *{margin:0px;box-sizing:border-box;font-family:"Poppins",sans-serif}.lkdin_ext_container_header{display:flex;align-items:center;justify-content:space-between;height:70px;background-color:#0047ab;padding:0px 20px}.lkdin_ext_container_header svg{cursor:pointer}.lkdin_ext_container_close{position:absolute;right:15px;top:15px;cursor:pointer}.lkdin_ext_resume_warning{display:flex;flex-direction:row;justify-content:flex-start;align-items:center;padding:7px;border-radius:16px;background:#fef0c7;gap:12px;width:97%;margin:auto;margin-top:14px}.lkdin_ext_resume_warning_badge{border-radius:16px;background:#fffaeb;display:flex;padding:2px 10px;justify-content:center;align-items:center;color:#b54708;text-align:center;font-size:12px;font-style:normal;font-weight:500;line-height:20px;width:170px}.lkdin_ext_resume_warning_text p{color:#b54708;font-size:12px;font-style:normal;font-weight:500;line-height:14px}.lkdin_ext_resume_warning_text span{color:#444;font-size:10px;font-style:normal;font-weight:400;line-height:14px;margin-top:2px}.lkdin_ext_container_section{display:flex;flex-direction:column;background:#0358cf;min-height:100px;justify-content:center;padding:18px;color:#fff}.lkdin_ext_container_section_details{display:flex;flex-direction:column;background:#fff;min-height:100px;justify-content:center;padding:18px;color:#fff}.lkdin_ext_container_section_header{display:flex;justify-content:space-between;align-items:center}.lkdin_ext_container_section_header span{font-family:"Poppins",sans-serif;font-style:normal;font-weight:500;font-size:18px;line-height:28px;margin-bottom:4px}.lkdin_ext_container_section_header button{width:57px;height:17px;background:#fff;border:1px solid #3457d5;border-radius:5px;display:flex;align-items:center;justify-content:space-around;font-weight:500;font-size:10px;line-height:10px;color:#0358cf;cursor:pointer}.lkdin_ext_container_section_description{font-family:"Poppins",sans-serif;font-style:normal;font-weight:400;font-size:12px;line-height:16px}@keyframes albus_slide_in{0%{transform:translateX(100%);opacity:0}100%{transform:translateX(0);opacity:1}}@keyframes albus_slide_out{0%{transform:translateX(0);opacity:1}100%{transform:translateX(100%);opacity:0}}.lkdin_ext_form{padding:18px;display:flex;flex-direction:column;margin-top:5px;gap:16px}.lkdin_ext_form_item{display:flex;flex-direction:column}.lkdin_ext_form_item input{font-family:"Poppins",sans-serif;font-style:normal;width:100%;height:44px;background:#fff;border:1px solid #d0d5dd;box-shadow:0px 1px 2px rgba(16,24,40,.05);border-radius:8px;padding:10px 14px}.lkdin_ext_form_item textarea{font-family:"Poppins",sans-serif;font-style:normal;width:100%;height:370px;background:#fff;border:1px solid #d0d5dd;box-shadow:0px 1px 2px rgba(16,24,40,.05);border-radius:8px;padding:10px 14px}.lkdin_ext_form_label{font-family:"Poppins",sans-serif;font-style:normal;font-weight:500;font-size:14px;line-height:20px;color:#344054;margin-bottom:6px}.lkdin_ext_form_submit{width:100%;height:40px;background:#3457d5;border:1px solid #3457d5;border-radius:8px;display:flex;flex-direction:row;justify-content:center;align-items:center;padding:10px 16px;font-family:"Poppins",sans-serif;font-style:normal;font-weight:600;font-size:14px;line-height:20px;color:#fff;margin-top:28px;cursor:pointer}.lkdin_ext_pdf_download{width:100%;height:40px;background:#3457d5;border:1px solid #3457d5;border-radius:8px;display:flex;flex-direction:row;justify-content:center;align-items:center;padding:10px 16px;font-family:"Poppins",sans-serif;font-style:normal;font-weight:600;font-size:14px;line-height:20px;color:#fff;margin-top:18px;margin-bottom:-10px;cursor:pointer}.lkdin_ext_form_btn_group{display:flex;justify-content:flex-end;gap:14px}.lkdin_ext_form_back{width:110px;height:40px;background:#fff;border:1px solid #d0d5dd;box-shadow:0px 1px 2px rgba(16,24,40,.05);border-radius:8px;display:flex;flex-direction:row;justify-content:center;align-items:center;padding:10px 16px;font-family:"Poppins",sans-serif;font-style:normal;font-weight:600;font-size:14px;line-height:20px;color:#344054;margin-top:28px;cursor:pointer}.lkdin_ext_message_group{display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"Poppins",sans-serif;margin:auto;margin-bottom:34px;max-width:289px}.lkdin_ext_message_group_count{width:40px;height:40px;background:#0358cf;border-radius:100px;font-weight:500;font-size:18px;line-height:28px;color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:14px}.lkdin_ext_message_group_step{text-align:center;margin-bottom:14px;font-weight:500;font-size:18px;line-height:28px;color:#101828}.lkdin_ext_message_group_desc{text-align:center;font-weight:400;font-size:14px;line-height:20px;text-align:center;color:#667085}.lkdin_ext_message_group_desc span{color:#175cd3;font-weight:500;cursor:pointer}.lkdin_ext_form_input_btn{background:#fff;border:1px solid #d0d5dd;box-shadow:0px 1px 2px rgba(16,24,40,.05);border-radius:8px;display:inline-block;display:flex;align-items:center}.lkdin_ext_form_input_btn_plus{padding:0px 10px;display:flex;align-items:center;justify-content:center;cursor:pointer}.lkdin_ext_form_input_btn input{border:none;padding:0;padding:10px 14px}.lkdin_ext_form_input_btn input:focus{outline:none}.lkdin_ext_form_input_btn button{border:none;background:none}.lkdin_ext_form_skills_container{display:flex;gap:10px;flex-wrap:wrap}.lkdin_ext_form_skills_list{font-family:"Poppins",sans-serif;font-style:normal;font-weight:500;font-size:14px;line-height:20px;color:#175cd3;background:#eff8ff;border-radius:16px;display:flex;align-items:center;justify-content:space-between;padding:4px 12px;height:28px}.lkdin_ext_form_skills_list span{margin-right:7px}.lkdin_ext_form_skills_list svg{cursor:pointer}.lkdin_ext_message_group_updated{height:169px;background:linear-gradient(117.11deg, #0047ab 19.32%, #007fff 75.92%);border:1px solid #3984ee;border-radius:14px;width:100%;color:#fff;display:flex;flex-direction:column;padding:16px;margin:auto;margin-bottom:34px}.lkdin_ext_message_group_updated div{font-style:normal;font-weight:500;font-size:18px;line-height:28px;font-family:"Poppins",sans-serif;font-style:normal}.lkdin_ext_message_group_updated p{font-weight:400;font-size:14px;line-height:20px;margin-top:12px}.lkdin_ext_message_group_updated button{font-weight:400;font-size:14px;line-height:20px;color:#000;width:144px;height:35px;background:#fff;border-radius:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;margin-top:20px;margin-left:auto}.lkdin_ext_branding_btn{position:absolute;top:-8px;right:10px;width:79px;height:16px;background:linear-gradient(93.72deg, #ff0099 -63.14%, #347be7 138.35%);border-radius:40px;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:500;font-size:10px;line-height:13px;font-family:"Poppins",sans-serif;color:#fff}.lkdin_ext_job_score{width:48px;height:48px;background:linear-gradient(112.41deg, #ee1764 8.3%, #fc3e77 106.68%);border-radius:100px;font-family:"Poppins",sans-serif;font-style:normal;font-weight:600;font-size:16px;line-height:19px;color:#fff;position:absolute;top:10px;right:52px;display:flex;align-items:center;justify-content:center}.lkdin_ext_job_score span{position:absolute;top:0px;right:-24px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:8px;line-height:10px;color:#fff;width:45px;height:16px;background:#f53636;box-shadow:0px 4px 4px rgba(0,0,0,.25);border-radius:4px}#minerva_extension_handle{position:fixed;right:0px;top:0px;z-index:2147483646;height:100vh}.minerva_extension_handle_inner{width:0px;background-color:#f8fbfe;height:100%}.minerva_extension_handle_inner_position{position:absolute;right:5px;top:57vh;display:flex;width:52px;height:52px;background:#d2d2d2;border-radius:100px 100px 10px 100px;display:flex;align-items:center;justify-content:center;padding:3px}.minerva_extension_handle_inner_container{border-radius:100px;width:43px;height:43px;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}.minerva_extension_handle_inner_container:hover{box-shadow:rgba(100,100,111,.2) 0px 7px 29px 0px}.spinner{width:24px;height:24px;border-radius:50%;background:conic-gradient(rgba(0, 0, 0, 0) 10%, #f5f5f5);-webkit-mask:radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 3.8px), #000 0);animation:spinner-zp9dbg 1s infinite linear}@keyframes spinner-zp9dbg{to{transform:rotate(1turn)}}.lkdin_ext_onboarding{display:flex;flex-direction:column;align-items:center;justify-content:center}.lkdin_ext_onboarding h2{font-family:"Poppins";font-style:normal;font-weight:600;font-size:24px;line-height:28px;color:#000;margin:94px 0px 30px 0px;text-align:center}.lkdin_ext_onboarding p{font-family:"Poppins";font-style:normal;font-weight:500;font-size:14px;line-height:28px;text-align:center;color:#6f6f6f;min-height:150px;padding:0px 15px}.lkdin_ext_onboarding_top{width:100%;height:214px;background:linear-gradient(117.11deg, #0047ab 19.32%, #007fff 75.92%);border-radius:0px 0px 100px 100px;position:relative}.lkdin_ext_onboarding_icon{position:absolute;width:131px;height:131px;background:#fff;border:1px solid #afafaf;bottom:0px;left:50%;transform:translate(-50%, 50%);border-radius:100%;display:flex;align-items:center;justify-content:center}.lkdin_ext_onboarding_stepper{display:flex;align-items:center;justify-content:center;width:100%;margin-top:30px;gap:9px}.lkdin_ext_onboarding_stepper span{width:27px;height:5.66px;border-radius:20px;cursor:pointer}.lkdin_ext_onboarding_button{width:95%;display:flex;align-items:center;justify-content:flex-end}.lkdin_ext_onboarding_button button{border-radius:20px;width:126px}.lkdin_ext_onboarding_img{position:absolute;bottom:0px;left:50%;width:268px;transform:translate(-50%, 50%)}#minerva_extension_autofill_button{display:flex;width:161px;height:26px;padding:2px 8px;justify-content:center;align-items:center;color:#5925dc;text-align:center;font-size:14px;font-style:normal;font-weight:500;line-height:18px;border-radius:16px;background:#eae9ff;border:none;outline:none;cursor:pointer;position:absolute;top:2px;right:10px}</style><style></style><style>.cLD4YbNqIJl6u2ZcPFOp{background:#fff;box-shadow:3px 3px 8px 8px rgba(0,0,0,.1);flex-direction:column;display:flex;justify-content:center;color:#152c5b;align-items:center;border-radius:1rem;min-width:30vw;align-items:center}</style><style>.introjs-overlay{position:absolute;box-sizing:content-box;z-index:999999;opacity:0;transition:all .3s ease-out}.introjs-showElement{z-index:9999999 !important}tr.introjs-showElement>td{z-index:9999999 !important;position:relative}tr.introjs-showElement>th{z-index:9999999 !important;position:relative}.introjs-disableInteraction{z-index:99999999 !important;position:absolute;background-color:#fff;opacity:0}.introjs-relativePosition{position:relative}.introjs-helperLayer{box-sizing:content-box;position:absolute;z-index:9999998;border-radius:4px;transition:all .3s ease-out}.introjs-helperLayer *{box-sizing:content-box}.introjs-helperLayer :before{box-sizing:content-box}.introjs-helperLayer :after{box-sizing:content-box}.introjs-tooltipReferenceLayer{font-family:"Helvetica Neue",Inter,ui-sans-serif,"Apple Color Emoji",Helvetica,Arial,sans-serif;box-sizing:content-box;position:absolute;visibility:hidden;z-index:100000000;background-color:rgba(0,0,0,0);transition:all .3s ease-out}.introjs-tooltipReferenceLayer *{font-family:"Helvetica Neue",Inter,ui-sans-serif,"Apple Color Emoji",Helvetica,Arial,sans-serif}.introjs-helperNumberLayer{font-family:"Helvetica Neue",Inter,ui-sans-serif,"Apple Color Emoji",Helvetica,Arial,sans-serif;color:#9e9e9e;text-align:center;padding-top:10px;padding-bottom:10px}.introjs-arrow{border:5px solid rgba(0,0,0,0);content:"";position:absolute}.introjs-arrow.top{top:-10px;left:10px;border-bottom-color:#fff}.introjs-arrow.top-right{top:-10px;right:10px;border-bottom-color:#fff}.introjs-arrow.top-middle{top:-10px;left:50%;margin-left:-5px;border-bottom-color:#fff}.introjs-arrow.right{right:-10px;top:10px;border-left-color:#fff}.introjs-arrow.right-bottom{bottom:10px;right:-10px;border-left-color:#fff}.introjs-arrow.bottom{bottom:-10px;left:10px;border-top-color:#fff}.introjs-arrow.bottom-right{bottom:-10px;right:10px;border-top-color:#fff}.introjs-arrow.bottom-middle{bottom:-10px;left:50%;margin-left:-5px;border-top-color:#fff}.introjs-arrow.left{left:-10px;top:10px;border-right-color:#fff}.introjs-arrow.left-bottom{left:-10px;bottom:10px;border-right-color:#fff}.introjs-tooltip{box-sizing:content-box;position:absolute;visibility:visible;background-color:#fff;min-width:250px;max-width:300px;border-radius:5px;box-shadow:0 3px 30px rgba(33,33,33,.3);transition:opacity .1s ease-out}.introjs-tooltiptext{padding:20px}.introjs-dontShowAgain{padding-left:20px;padding-right:20px}.introjs-dontShowAgain input{padding:0;margin:0;margin-bottom:2px;display:inline;width:10px;height:10px}.introjs-dontShowAgain label{font-size:14px;display:inline-block;font-weight:400;margin:0 0 0 5px;padding:0;background-color:#fff;color:#616161;-webkit-user-select:none;user-select:none}.introjs-tooltip-title{font-size:18px;width:90%;min-height:1.5em;margin:0;padding:0;font-weight:700;line-height:1.5}.introjs-tooltip-header{position:relative;padding-left:20px;padding-right:20px;padding-top:10px;min-height:1.5em}.introjs-tooltipbuttons{border-top:1px solid #e0e0e0;padding:10px;text-align:right;white-space:nowrap}.introjs-tooltipbuttons:after{content:"";visibility:hidden;display:block;height:0;clear:both}.introjs-button{box-sizing:content-box;position:relative;overflow:visible;padding:.5rem 1rem;border:1px solid #bdbdbd;text-decoration:none;text-shadow:1px 1px 0 #fff;font-size:14px;color:#424242;white-space:nowrap;cursor:pointer;outline:0;background-color:#f4f4f4;border-radius:.2em;zoom:1;display:inline}.introjs-button:hover{outline:0;text-decoration:none;border-color:#9e9e9e;background-color:#e0e0e0;color:#212121}.introjs-button:focus{outline:0;text-decoration:none;background-color:#eee;box-shadow:0 0 0 .2rem rgba(158,158,158,.5);border:1px solid #616161;color:#212121}.introjs-button:active{outline:0;text-decoration:none;background-color:#e0e0e0;border-color:#9e9e9e;color:#212121}.introjs-button::-moz-focus-inner{padding:0;border:0}.introjs-skipbutton{position:absolute;top:0;right:0;display:inline-block;width:45px;height:45px;line-height:45px;color:#616161;font-size:22px;cursor:pointer;font-weight:700;text-align:center;text-decoration:none}.introjs-skipbutton:focus,.introjs-skipbutton:hover{color:#212121;outline:0;text-decoration:none}.introjs-prevbutton{float:left}.introjs-nextbutton{float:right}.introjs-disabled{color:#9e9e9e;border-color:#bdbdbd;box-shadow:none;cursor:default;background-color:#f4f4f4;background-image:none;text-decoration:none}.introjs-disabled:focus,.introjs-disabled:hover{color:#9e9e9e;border-color:#bdbdbd;box-shadow:none;cursor:default;background-color:#f4f4f4;background-image:none;text-decoration:none}.introjs-hidden{display:none}.introjs-bullets{text-align:center;padding-top:10px;padding-bottom:10px}.introjs-bullets ul{box-sizing:content-box;clear:both;margin:0 auto 0;padding:0;display:inline-block}.introjs-bullets ul li{box-sizing:content-box;list-style:none;float:left;margin:0 2px}.introjs-bullets ul li a{transition:width .1s ease-in;box-sizing:content-box;display:block;width:6px;height:6px;background:#ccc;border-radius:10px;text-decoration:none;cursor:pointer}.introjs-bullets ul li a:focus,.introjs-bullets ul li a:hover{width:15px;background:#999;text-decoration:none;outline:0}.introjs-bullets ul li a.active{width:15px;background:#999}.introjs-progress{box-sizing:content-box;overflow:hidden;height:10px;margin:10px;border-radius:4px;background-color:#e0e0e0}.introjs-progressbar{box-sizing:content-box;float:left;width:0%;height:100%;font-size:10px;line-height:10px;text-align:center;background-color:#08c}.introjsFloatingElement{position:absolute;height:0;width:0;left:50%;top:50%}.introjs-fixedTooltip{position:fixed}.introjs-hint{box-sizing:content-box;position:absolute;background:0 0;width:20px;height:15px;cursor:pointer}.introjs-hint:focus{border:0;outline:0}.introjs-hint:hover>.introjs-hint-pulse{background-color:rgba(60,60,60,.57)}.introjs-hidehint{display:none}.introjs-fixedhint{position:fixed}@keyframes introjspulse{0%{transform:scale(0.95);box-shadow:0 0 0 0 rgba(0,0,0,.7)}70%{transform:scale(1);box-shadow:0 0 0 10px rgba(0,0,0,0)}100%{transform:scale(0.95);box-shadow:0 0 0 0 rgba(0,0,0,0)}}.introjs-hint-pulse{box-sizing:content-box;width:15px;height:15px;border-radius:30px;background-color:rgba(136,136,136,.24);z-index:10;position:absolute;transition:all .2s ease-out;animation:introjspulse 2s infinite}.introjs-hint-no-anim .introjs-hint-pulse{animation:none}.introjs-hint-dot{box-sizing:content-box;background:0 0;border-radius:60px;height:50px;width:50px;position:absolute;top:-18px;left:-18px;z-index:1;opacity:0}</style><style>/*!
+ * Quill Editor v1.3.7
+ * https://quilljs.com/
+ * Copyright (c) 2014, Jason Chen
+ * Copyright (c) 2013, salesforce.com
+ */.ql-container{box-sizing:border-box;font-family:Helvetica,Arial,sans-serif;font-size:13px;height:100%;margin:0px;position:relative}.ql-container.ql-disabled .ql-tooltip{visibility:hidden}.ql-container.ql-disabled .ql-editor ul[data-checked]>li::before{pointer-events:none}.ql-clipboard{left:-100000px;height:1px;overflow-y:hidden;position:absolute;top:50%}.ql-clipboard p{margin:0;padding:0}.ql-editor{box-sizing:border-box;line-height:1.42;height:100%;outline:none;overflow-y:auto;padding:12px 15px;tab-size:4;-moz-tab-size:4;text-align:left;white-space:pre-wrap;word-wrap:break-word}.ql-editor>*{cursor:text}.ql-editor p,.ql-editor ol,.ql-editor ul,.ql-editor pre,.ql-editor blockquote,.ql-editor h1,.ql-editor h2,.ql-editor h3,.ql-editor h4,.ql-editor h5,.ql-editor h6{margin:0;padding:0;counter-reset:list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9}.ql-editor ol,.ql-editor ul{padding-left:1.5em}.ql-editor ol>li,.ql-editor ul>li{list-style-type:none}.ql-editor ul>li::before{content:"•"}.ql-editor ul[data-checked=true],.ql-editor ul[data-checked=false]{pointer-events:none}.ql-editor ul[data-checked=true]>li *,.ql-editor ul[data-checked=false]>li *{pointer-events:all}.ql-editor ul[data-checked=true]>li::before,.ql-editor ul[data-checked=false]>li::before{color:#777;cursor:pointer;pointer-events:all}.ql-editor ul[data-checked=true]>li::before{content:"☑"}.ql-editor ul[data-checked=false]>li::before{content:"☐"}.ql-editor li::before{display:inline-block;white-space:nowrap;width:1.2em}.ql-editor li:not(.ql-direction-rtl)::before{margin-left:-1.5em;margin-right:.3em;text-align:right}.ql-editor li.ql-direction-rtl::before{margin-left:.3em;margin-right:-1.5em}.ql-editor ol li:not(.ql-direction-rtl),.ql-editor ul li:not(.ql-direction-rtl){padding-left:1.5em}.ql-editor ol li.ql-direction-rtl,.ql-editor ul li.ql-direction-rtl{padding-right:1.5em}.ql-editor ol li{counter-reset:list-1 list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9;counter-increment:list-0}.ql-editor ol li:before{content:counter(list-0, decimal) ". "}.ql-editor ol li.ql-indent-1{counter-increment:list-1}.ql-editor ol li.ql-indent-1:before{content:counter(list-1, lower-alpha) ". "}.ql-editor ol li.ql-indent-1{counter-reset:list-2 list-3 list-4 list-5 list-6 list-7 list-8 list-9}.ql-editor ol li.ql-indent-2{counter-increment:list-2}.ql-editor ol li.ql-indent-2:before{content:counter(list-2, lower-roman) ". "}.ql-editor ol li.ql-indent-2{counter-reset:list-3 list-4 list-5 list-6 list-7 list-8 list-9}.ql-editor ol li.ql-indent-3{counter-increment:list-3}.ql-editor ol li.ql-indent-3:before{content:counter(list-3, decimal) ". "}.ql-editor ol li.ql-indent-3{counter-reset:list-4 list-5 list-6 list-7 list-8 list-9}.ql-editor ol li.ql-indent-4{counter-increment:list-4}.ql-editor ol li.ql-indent-4:before{content:counter(list-4, lower-alpha) ". "}.ql-editor ol li.ql-indent-4{counter-reset:list-5 list-6 list-7 list-8 list-9}.ql-editor ol li.ql-indent-5{counter-increment:list-5}.ql-editor ol li.ql-indent-5:before{content:counter(list-5, lower-roman) ". "}.ql-editor ol li.ql-indent-5{counter-reset:list-6 list-7 list-8 list-9}.ql-editor ol li.ql-indent-6{counter-increment:list-6}.ql-editor ol li.ql-indent-6:before{content:counter(list-6, decimal) ". "}.ql-editor ol li.ql-indent-6{counter-reset:list-7 list-8 list-9}.ql-editor ol li.ql-indent-7{counter-increment:list-7}.ql-editor ol li.ql-indent-7:before{content:counter(list-7, lower-alpha) ". "}.ql-editor ol li.ql-indent-7{counter-reset:list-8 list-9}.ql-editor ol li.ql-indent-8{counter-increment:list-8}.ql-editor ol li.ql-indent-8:before{content:counter(list-8, lower-roman) ". "}.ql-editor ol li.ql-indent-8{counter-reset:list-9}.ql-editor ol li.ql-indent-9{counter-increment:list-9}.ql-editor ol li.ql-indent-9:before{content:counter(list-9, decimal) ". "}.ql-editor .ql-indent-1:not(.ql-direction-rtl){padding-left:3em}.ql-editor li.ql-indent-1:not(.ql-direction-rtl){padding-left:4.5em}.ql-editor .ql-indent-1.ql-direction-rtl.ql-align-right{padding-right:3em}.ql-editor li.ql-indent-1.ql-direction-rtl.ql-align-right{padding-right:4.5em}.ql-editor .ql-indent-2:not(.ql-direction-rtl){padding-left:6em}.ql-editor li.ql-indent-2:not(.ql-direction-rtl){padding-left:7.5em}.ql-editor .ql-indent-2.ql-direction-rtl.ql-align-right{padding-right:6em}.ql-editor li.ql-indent-2.ql-direction-rtl.ql-align-right{padding-right:7.5em}.ql-editor .ql-indent-3:not(.ql-direction-rtl){padding-left:9em}.ql-editor li.ql-indent-3:not(.ql-direction-rtl){padding-left:10.5em}.ql-editor .ql-indent-3.ql-direction-rtl.ql-align-right{padding-right:9em}.ql-editor li.ql-indent-3.ql-direction-rtl.ql-align-right{padding-right:10.5em}.ql-editor .ql-indent-4:not(.ql-direction-rtl){padding-left:12em}.ql-editor li.ql-indent-4:not(.ql-direction-rtl){padding-left:13.5em}.ql-editor .ql-indent-4.ql-direction-rtl.ql-align-right{padding-right:12em}.ql-editor li.ql-indent-4.ql-direction-rtl.ql-align-right{padding-right:13.5em}.ql-editor .ql-indent-5:not(.ql-direction-rtl){padding-left:15em}.ql-editor li.ql-indent-5:not(.ql-direction-rtl){padding-left:16.5em}.ql-editor .ql-indent-5.ql-direction-rtl.ql-align-right{padding-right:15em}.ql-editor li.ql-indent-5.ql-direction-rtl.ql-align-right{padding-right:16.5em}.ql-editor .ql-indent-6:not(.ql-direction-rtl){padding-left:18em}.ql-editor li.ql-indent-6:not(.ql-direction-rtl){padding-left:19.5em}.ql-editor .ql-indent-6.ql-direction-rtl.ql-align-right{padding-right:18em}.ql-editor li.ql-indent-6.ql-direction-rtl.ql-align-right{padding-right:19.5em}.ql-editor .ql-indent-7:not(.ql-direction-rtl){padding-left:21em}.ql-editor li.ql-indent-7:not(.ql-direction-rtl){padding-left:22.5em}.ql-editor .ql-indent-7.ql-direction-rtl.ql-align-right{padding-right:21em}.ql-editor li.ql-indent-7.ql-direction-rtl.ql-align-right{padding-right:22.5em}.ql-editor .ql-indent-8:not(.ql-direction-rtl){padding-left:24em}.ql-editor li.ql-indent-8:not(.ql-direction-rtl){padding-left:25.5em}.ql-editor .ql-indent-8.ql-direction-rtl.ql-align-right{padding-right:24em}.ql-editor li.ql-indent-8.ql-direction-rtl.ql-align-right{padding-right:25.5em}.ql-editor .ql-indent-9:not(.ql-direction-rtl){padding-left:27em}.ql-editor li.ql-indent-9:not(.ql-direction-rtl){padding-left:28.5em}.ql-editor .ql-indent-9.ql-direction-rtl.ql-align-right{padding-right:27em}.ql-editor li.ql-indent-9.ql-direction-rtl.ql-align-right{padding-right:28.5em}.ql-editor .ql-video{display:block;max-width:100%}.ql-editor .ql-video.ql-align-center{margin:0 auto}.ql-editor .ql-video.ql-align-right{margin:0 0 0 auto}.ql-editor .ql-bg-black{background-color:#000}.ql-editor .ql-bg-red{background-color:#e60000}.ql-editor .ql-bg-orange{background-color:#f90}.ql-editor .ql-bg-yellow{background-color:#ff0}.ql-editor .ql-bg-green{background-color:#008a00}.ql-editor .ql-bg-blue{background-color:#06c}.ql-editor .ql-bg-purple{background-color:#93f}.ql-editor .ql-color-white{color:#fff}.ql-editor .ql-color-red{color:#e60000}.ql-editor .ql-color-orange{color:#f90}.ql-editor .ql-color-yellow{color:#ff0}.ql-editor .ql-color-green{color:#008a00}.ql-editor .ql-color-blue{color:#06c}.ql-editor .ql-color-purple{color:#93f}.ql-editor .ql-font-serif{font-family:Georgia,Times New Roman,serif}.ql-editor .ql-font-monospace{font-family:Monaco,Courier New,monospace}.ql-editor .ql-size-small{font-size:.75em}.ql-editor .ql-size-large{font-size:1.5em}.ql-editor .ql-size-huge{font-size:2.5em}.ql-editor .ql-direction-rtl{direction:rtl;text-align:inherit}.ql-editor .ql-align-center{text-align:center}.ql-editor .ql-align-justify{text-align:justify}.ql-editor .ql-align-right{text-align:right}.ql-editor.ql-blank::before{color:rgba(0,0,0,.6);content:attr(data-placeholder);font-style:italic;left:15px;pointer-events:none;position:absolute;right:15px}.ql-snow.ql-toolbar:after,.ql-snow .ql-toolbar:after{clear:both;content:"";display:table}.ql-snow.ql-toolbar button,.ql-snow .ql-toolbar button{background:none;border:none;cursor:pointer;display:inline-block;float:left;height:24px;padding:3px 5px;width:28px}.ql-snow.ql-toolbar button svg,.ql-snow .ql-toolbar button svg{float:left;height:100%}.ql-snow.ql-toolbar button:active:hover,.ql-snow .ql-toolbar button:active:hover{outline:none}.ql-snow.ql-toolbar input.ql-image[type=file],.ql-snow .ql-toolbar input.ql-image[type=file]{display:none}.ql-snow.ql-toolbar button:hover,.ql-snow .ql-toolbar button:hover,.ql-snow.ql-toolbar button:focus,.ql-snow .ql-toolbar button:focus,.ql-snow.ql-toolbar button.ql-active,.ql-snow .ql-toolbar button.ql-active,.ql-snow.ql-toolbar .ql-picker-label:hover,.ql-snow .ql-toolbar .ql-picker-label:hover,.ql-snow.ql-toolbar .ql-picker-label.ql-active,.ql-snow .ql-toolbar .ql-picker-label.ql-active,.ql-snow.ql-toolbar .ql-picker-item:hover,.ql-snow .ql-toolbar .ql-picker-item:hover,.ql-snow.ql-toolbar .ql-picker-item.ql-selected,.ql-snow .ql-toolbar .ql-picker-item.ql-selected{color:#06c}.ql-snow.ql-toolbar button:hover .ql-fill,.ql-snow .ql-toolbar button:hover .ql-fill,.ql-snow.ql-toolbar button:focus .ql-fill,.ql-snow .ql-toolbar button:focus .ql-fill,.ql-snow.ql-toolbar button.ql-active .ql-fill,.ql-snow .ql-toolbar button.ql-active .ql-fill,.ql-snow.ql-toolbar .ql-picker-label:hover .ql-fill,.ql-snow .ql-toolbar .ql-picker-label:hover .ql-fill,.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-fill,.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-fill,.ql-snow.ql-toolbar .ql-picker-item:hover .ql-fill,.ql-snow .ql-toolbar .ql-picker-item:hover .ql-fill,.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-fill,.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-fill,.ql-snow.ql-toolbar button:hover .ql-stroke.ql-fill,.ql-snow .ql-toolbar button:hover .ql-stroke.ql-fill,.ql-snow.ql-toolbar button:focus .ql-stroke.ql-fill,.ql-snow .ql-toolbar button:focus .ql-stroke.ql-fill,.ql-snow.ql-toolbar button.ql-active .ql-stroke.ql-fill,.ql-snow .ql-toolbar button.ql-active .ql-stroke.ql-fill,.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill,.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke.ql-fill,.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke.ql-fill,.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke.ql-fill,.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill,.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke.ql-fill{fill:#06c}.ql-snow.ql-toolbar button:hover .ql-stroke,.ql-snow .ql-toolbar button:hover .ql-stroke,.ql-snow.ql-toolbar button:focus .ql-stroke,.ql-snow .ql-toolbar button:focus .ql-stroke,.ql-snow.ql-toolbar button.ql-active .ql-stroke,.ql-snow .ql-toolbar button.ql-active .ql-stroke,.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke,.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke,.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke,.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke,.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke,.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke,.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke,.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke,.ql-snow.ql-toolbar button:hover .ql-stroke-miter,.ql-snow .ql-toolbar button:hover .ql-stroke-miter,.ql-snow.ql-toolbar button:focus .ql-stroke-miter,.ql-snow .ql-toolbar button:focus .ql-stroke-miter,.ql-snow.ql-toolbar button.ql-active .ql-stroke-miter,.ql-snow .ql-toolbar button.ql-active .ql-stroke-miter,.ql-snow.ql-toolbar .ql-picker-label:hover .ql-stroke-miter,.ql-snow .ql-toolbar .ql-picker-label:hover .ql-stroke-miter,.ql-snow.ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,.ql-snow .ql-toolbar .ql-picker-label.ql-active .ql-stroke-miter,.ql-snow.ql-toolbar .ql-picker-item:hover .ql-stroke-miter,.ql-snow .ql-toolbar .ql-picker-item:hover .ql-stroke-miter,.ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter,.ql-snow .ql-toolbar .ql-picker-item.ql-selected .ql-stroke-miter{stroke:#06c}@media(pointer: coarse){.ql-snow.ql-toolbar button:hover:not(.ql-active),.ql-snow .ql-toolbar button:hover:not(.ql-active){color:#444}.ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-fill,.ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-fill,.ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill,.ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke.ql-fill{fill:#444}.ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke,.ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke,.ql-snow.ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter,.ql-snow .ql-toolbar button:hover:not(.ql-active) .ql-stroke-miter{stroke:#444}}.ql-snow{box-sizing:border-box}.ql-snow *{box-sizing:border-box}.ql-snow .ql-hidden{display:none}.ql-snow .ql-out-bottom,.ql-snow .ql-out-top{visibility:hidden}.ql-snow .ql-tooltip{position:absolute;transform:translateY(10px)}.ql-snow .ql-tooltip a{cursor:pointer;text-decoration:none}.ql-snow .ql-tooltip.ql-flip{transform:translateY(-10px)}.ql-snow .ql-formats{display:inline-block;vertical-align:middle}.ql-snow .ql-formats:after{clear:both;content:"";display:table}.ql-snow .ql-stroke{fill:none;stroke:#444;stroke-linecap:round;stroke-linejoin:round;stroke-width:2}.ql-snow .ql-stroke-miter{fill:none;stroke:#444;stroke-miterlimit:10;stroke-width:2}.ql-snow .ql-fill,.ql-snow .ql-stroke.ql-fill{fill:#444}.ql-snow .ql-empty{fill:none}.ql-snow .ql-even{fill-rule:evenodd}.ql-snow .ql-thin,.ql-snow .ql-stroke.ql-thin{stroke-width:1}.ql-snow .ql-transparent{opacity:.4}.ql-snow .ql-direction svg:last-child{display:none}.ql-snow .ql-direction.ql-active svg:last-child{display:inline}.ql-snow .ql-direction.ql-active svg:first-child{display:none}.ql-snow .ql-editor h1{font-size:2em}.ql-snow .ql-editor h2{font-size:1.5em}.ql-snow .ql-editor h3{font-size:1.17em}.ql-snow .ql-editor h4{font-size:1em}.ql-snow .ql-editor h5{font-size:.83em}.ql-snow .ql-editor h6{font-size:.67em}.ql-snow .ql-editor a{text-decoration:underline}.ql-snow .ql-editor blockquote{border-left:4px solid #ccc;margin-bottom:5px;margin-top:5px;padding-left:16px}.ql-snow .ql-editor code,.ql-snow .ql-editor pre{background-color:#f0f0f0;border-radius:3px}.ql-snow .ql-editor pre{white-space:pre-wrap;margin-bottom:5px;margin-top:5px;padding:5px 10px}.ql-snow .ql-editor code{font-size:85%;padding:2px 4px}.ql-snow .ql-editor pre.ql-syntax{background-color:#23241f;color:#f8f8f2;overflow:visible}.ql-snow .ql-editor img{max-width:100%}.ql-snow .ql-picker{color:#444;display:inline-block;float:left;font-size:14px;font-weight:500;height:24px;position:relative;vertical-align:middle}.ql-snow .ql-picker-label{cursor:pointer;display:inline-block;height:100%;padding-left:8px;padding-right:2px;position:relative;width:100%}.ql-snow .ql-picker-label::before{display:inline-block;line-height:22px}.ql-snow .ql-picker-options{background-color:#fff;display:none;min-width:100%;padding:4px 8px;position:absolute;white-space:nowrap}.ql-snow .ql-picker-options .ql-picker-item{cursor:pointer;display:block;padding-bottom:5px;padding-top:5px}.ql-snow .ql-picker.ql-expanded .ql-picker-label{color:#ccc;z-index:2}.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-fill{fill:#ccc}.ql-snow .ql-picker.ql-expanded .ql-picker-label .ql-stroke{stroke:#ccc}.ql-snow .ql-picker.ql-expanded .ql-picker-options{display:block;margin-top:-1px;top:100%;z-index:1}.ql-snow .ql-color-picker,.ql-snow .ql-icon-picker{width:28px}.ql-snow .ql-color-picker .ql-picker-label,.ql-snow .ql-icon-picker .ql-picker-label{padding:2px 4px}.ql-snow .ql-color-picker .ql-picker-label svg,.ql-snow .ql-icon-picker .ql-picker-label svg{right:4px}.ql-snow .ql-icon-picker .ql-picker-options{padding:4px 0px}.ql-snow .ql-icon-picker .ql-picker-item{height:24px;width:24px;padding:2px 4px}.ql-snow .ql-color-picker .ql-picker-options{padding:3px 5px;width:152px}.ql-snow .ql-color-picker .ql-picker-item{border:1px solid rgba(0,0,0,0);float:left;height:16px;margin:2px;padding:0px;width:16px}.ql-snow .ql-picker:not(.ql-color-picker):not(.ql-icon-picker) svg{position:absolute;margin-top:-9px;right:0;top:50%;width:18px}.ql-snow .ql-picker.ql-header .ql-picker-label[data-label]:not([data-label=""])::before,.ql-snow .ql-picker.ql-font .ql-picker-label[data-label]:not([data-label=""])::before,.ql-snow .ql-picker.ql-size .ql-picker-label[data-label]:not([data-label=""])::before,.ql-snow .ql-picker.ql-header .ql-picker-item[data-label]:not([data-label=""])::before,.ql-snow .ql-picker.ql-font .ql-picker-item[data-label]:not([data-label=""])::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-label]:not([data-label=""])::before{content:attr(data-label)}.ql-snow .ql-picker.ql-header{width:98px}.ql-snow .ql-picker.ql-header .ql-picker-label::before,.ql-snow .ql-picker.ql-header .ql-picker-item::before{content:"Normal"}.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="1"]::before,.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before{content:"Heading 1"}.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before{content:"Heading 2"}.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before{content:"Heading 3"}.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before,.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before{content:"Heading 4"}.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before,.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before{content:"Heading 5"}.ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before,.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before{content:"Heading 6"}.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before{font-size:2em}.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before{font-size:1.5em}.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before{font-size:1.17em}.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before{font-size:1em}.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before{font-size:.83em}.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before{font-size:.67em}.ql-snow .ql-picker.ql-font{width:108px}.ql-snow .ql-picker.ql-font .ql-picker-label::before,.ql-snow .ql-picker.ql-font .ql-picker-item::before{content:"Sans Serif"}.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=serif]::before,.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=serif]::before{content:"Serif"}.ql-snow .ql-picker.ql-font .ql-picker-label[data-value=monospace]::before,.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=monospace]::before{content:"Monospace"}.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=serif]::before{font-family:Georgia,Times New Roman,serif}.ql-snow .ql-picker.ql-font .ql-picker-item[data-value=monospace]::before{font-family:Monaco,Courier New,monospace}.ql-snow .ql-picker.ql-size{width:98px}.ql-snow .ql-picker.ql-size .ql-picker-label::before,.ql-snow .ql-picker.ql-size .ql-picker-item::before{content:"Normal"}.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=small]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=small]::before{content:"Small"}.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=large]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=large]::before{content:"Large"}.ql-snow .ql-picker.ql-size .ql-picker-label[data-value=huge]::before,.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=huge]::before{content:"Huge"}.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=small]::before{font-size:10px}.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=large]::before{font-size:18px}.ql-snow .ql-picker.ql-size .ql-picker-item[data-value=huge]::before{font-size:32px}.ql-snow .ql-color-picker.ql-background .ql-picker-item{background-color:#fff}.ql-snow .ql-color-picker.ql-color .ql-picker-item{background-color:#000}.ql-toolbar.ql-snow{border:1px solid #ccc;box-sizing:border-box;font-family:"Helvetica Neue","Helvetica","Arial",sans-serif;padding:8px}.ql-toolbar.ql-snow .ql-formats{margin-right:15px}.ql-toolbar.ql-snow .ql-picker-label{border:1px solid rgba(0,0,0,0)}.ql-toolbar.ql-snow .ql-picker-options{border:1px solid rgba(0,0,0,0);box-shadow:rgba(0,0,0,.2) 0 2px 8px}.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-label{border-color:#ccc}.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options{border-color:#ccc}.ql-toolbar.ql-snow .ql-color-picker .ql-picker-item.ql-selected,.ql-toolbar.ql-snow .ql-color-picker .ql-picker-item:hover{border-color:#000}.ql-toolbar.ql-snow+.ql-container.ql-snow{border-top:0px}.ql-snow .ql-tooltip{background-color:#fff;border:1px solid #ccc;box-shadow:0px 0px 5px #ddd;color:#444;padding:5px 12px;white-space:nowrap}.ql-snow .ql-tooltip::before{content:"Visit URL:";line-height:26px;margin-right:8px}.ql-snow .ql-tooltip input[type=text]{display:none;border:1px solid #ccc;font-size:13px;height:26px;margin:0px;padding:3px 5px;width:170px}.ql-snow .ql-tooltip a.ql-preview{display:inline-block;max-width:200px;overflow-x:hidden;text-overflow:ellipsis;vertical-align:top}.ql-snow .ql-tooltip a.ql-action::after{border-right:1px solid #ccc;content:"Edit";margin-left:16px;padding-right:8px}.ql-snow .ql-tooltip a.ql-remove::before{content:"Remove";margin-left:8px}.ql-snow .ql-tooltip a{line-height:26px}.ql-snow .ql-tooltip.ql-editing a.ql-preview,.ql-snow .ql-tooltip.ql-editing a.ql-remove{display:none}.ql-snow .ql-tooltip.ql-editing input[type=text]{display:inline-block}.ql-snow .ql-tooltip.ql-editing a.ql-action::after{border-right:0px;content:"Save";padding-right:0px}.ql-snow .ql-tooltip[data-mode=link]::before{content:"Enter link:"}.ql-snow .ql-tooltip[data-mode=formula]::before{content:"Enter formula:"}.ql-snow .ql-tooltip[data-mode=video]::before{content:"Enter video:"}.ql-snow a{color:#06c}.ql-container.ql-snow{border:1px solid #ccc}</style><style>.searchResumeInput input{outline:none !important;color:#000 !important;border:none !important;box-shadow:none !important}</style><style>.skillSection>.ant-collapse-header{border-bottom:1px solid #e1edff}</style></head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="https://jalammar.github.io/" class="site-avatar"><img src="./Mohammed Kashif – Learn concepts from first principles._files/1007956"></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="https://jalammar.github.io/">Jay Alammar</a></h1>
+            <p class="site-description">Visualizing machine learning one concept at a time.<br>Read our book, <a href="https://www.llm-book.com/">Hands-On Large Language Models</a> and follow me on <a href="https://www.linkedin.com/in/jalammar/">LinkedIn</a>, <a href="https://bsky.app/profile/jayalammar.bsky.social">Bluesky</a>, <a href="https://newsletter.languagemodels.co/">Substack</a>, <a href="https://x.com/JayAlammar">X</a>,<a href="https://www.youtube.com/channel/UCmOwsoHty5PrmE-3QhUBfPQ">YouTube </a></p>
+          </div>
+
+          <nav>
+            <a href="https://jalammar.github.io/">Blog</a>
+            <a href="https://jalammar.github.io/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <div class="posts">
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/moving_to_substack/">Moving To Substack</a></h1>
+
+      <div class="entry">
+        <p>I’m freezing this blog and starting to post on <a href="https://newsletter.languagemodels.co/">my Substack</a> instead. The authoring experience is much more convenient for me there. Please follow me there, and check out <a href="https://newsletter.languagemodels.co/p/the-illustrated-deepseek-r1">The Illustrated DeepSeek R-1</a> if you haven’t yet.</p>
+
+<p>And check out our <a href="https://bit.ly/4aRnn7Z">How Transformer LLMs Work</a> course!</p>
+
+<iframe width="560" height="315" style="
+width: 100%;
+max-width: 560px;" src="./Mohammed Kashif – Learn concepts from first principles._files/k1ILy23t89E.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+
+      </div>
+
+      <a href="https://jalammar.github.io/moving_to_substack/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/generative-ai-and-ai-product-moats/">Generative AI and AI Product Moats</a></h1>
+
+      <div class="entry">
+        <div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/gen-ai-hero-image.jpg">
+  <br>
+</div>
+
+<p>Here are eight observations I’ve shared recently on the Cohere blog and videos that go over them.:</p>
+
+<p>Article: <a href="https://txt.cohere.com/generative-ai-future-or-present/">What’s the big deal with Generative AI? Is it the future or the present?</a></p>
+<iframe width="560" height="315" src="./Mohammed Kashif – Learn concepts from first principles._files/AeW9r3lopp0.html" style="
+width: 100%;
+max-width: 560px;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+<p>Article: <a href="https://txt.cohere.com/ai-is-eating-the-world/">AI is Eating The World</a></p>
+<iframe width="560" height="315" src="./Mohammed Kashif – Learn concepts from first principles._files/oTqG2DbXl2Y.html" tyle="
+width: 100%;
+max-width: 560px;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/generative-ai-and-ai-product-moats/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/ai-image-generation-tools/">Remaking Old Computer Graphics With AI Image Generation</a></h1>
+
+      <div class="entry">
+        <p>Can AI Image generation tools make re-imagined, higher-resolution versions of old video game graphics?</p>
+
+<p>Over the last few days, I used AI image generation to reproduce one of my childhood nightmares. I wrestled with Stable Diffusion, Dall-E and Midjourney to see how these commercial AI generation tools can help retell an old visual story - the intro cinematic to an old video game (<a href="https://en.wikipedia.org/wiki/Nemesis_2_(MSX)">Nemesis 2 on the MSX</a>). This post describes the process and my experience in using these models/services to retell a story in higher fidelity graphics.</p>
+
+<h2 id="meet-dr-venom">Meet Dr. Venom</h2>
+
+<div class="img-div">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/nemesis-2-intro-06.png">
+  <br>
+</div>
+
+<p>This fine-looking gentleman is the villain in a video game. Dr. Venom appears in the intro cinematic of Nemesis 2, a 1987 video game. This image, in particular, comes at a dramatic reveal in the cinematic.</p>
+
+<p>Let’s update these graphics with visual generative AI tools and see how they compare and where each succeeds and fails.</p>
+
+<h2 id="remaking-old-computer-graphics-with-ai-image-generation">Remaking Old Computer graphics with AI Image Generation</h2>
+
+<p>Here’s a side-by-side look at the panels from the original cinematic (left column) and the final ones generated by the AI tools (right column):</p>
+
+<div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/nemesis-2-intro-storyboard-image-gen.png">
+  <br>
+</div>
+
+<p>This figure does not show the final Dr. Venom graphic because I want you to witness it as I had, in the proper context and alongside the appropriate music. You can watch that here:</p>
+
+<iframe width="560" height="315" src="./Mohammed Kashif – Learn concepts from first principles._files/43bsSVnioI0.html" style="
+width: 100%;
+max-width: 560px;" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/ai-image-generation-tools/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/illustrated-stable-diffusion/">The Illustrated Stable Diffusion</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Translations: <a href="https://blog.csdn.net/yujianmin1990/article/details/129143157">Chinese</a>, <a href="https://trituenhantao.io/kien-thuc/minh-hoa-stable-diffusion/">Vietnamese</a>.
+</span></p>
+
+<p>(<strong>V2 Nov 2022</strong>: Updated images for more precise description of forward diffusion. A few more images in this version)</p>
+
+<p>AI image generation is the most recent AI capability blowing people’s minds (mine included). The ability to create striking visuals from text descriptions has a magical quality to it and points clearly to a shift in how humans create art. The release of <a href="https://stability.ai/blog/stable-diffusion-public-release">Stable Diffusion</a> is a clear milestone in this development because it made a high-performance model available to the masses (performance in terms of image quality, as well as speed and relatively low resource/memory requirements).</p>
+
+<iframe width="560" height="315" src="./Mohammed Kashif – Learn concepts from first principles._files/MXmacOUJUaw.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" style="
+ width: 100%;
+ max-width: 560px;" allowfullscreen=""></iframe>
+
+<p>After experimenting with AI image generation, you may start to wonder how it works.</p>
+
+<p>This is a gentle introduction to how Stable Diffusion works.</p>
+
+<div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/stable-diffusion-text-to-image.png">
+  <br>
+
+</div>
+
+<p>Stable Diffusion is versatile in that it can be used in a number of different ways. Let’s focus at first on image generation from text only (text2img). The image above shows an example text input and the resulting generated image (The actual complete prompt is here). Aside from text to image, another main way of using it is by making it alter images (so inputs are text + image).</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/illustrated-stable-diffusion/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/applying-large-language-models-cohere/">Applying massive language models in the real world with Cohere</a></h1>
+
+      <div class="entry">
+        <p>A little less than a year ago, I joined the awesome <a href="https://cohere.ai/">Cohere</a> team. The company trains massive language models (both GPT-like and BERT-like) and offers them as an API (which also supports finetuning). Its founders include Google Brain alums including co-authors of the original Transformers paper. It’s a fascinating role where I get to help companies and developers put these massive models to work solving real-world problems.</p>
+
+<p>I love that I get to share some of the intuitions developers need to start problem-solving with these models. Even though I’ve been working very closely on pretrained Transformers for the past several years (for this blog and in developing <a href="https://github.com/jalammar/ecco">Ecco</a>), I’m enjoying the convenience of problem-solving with managed language models as it frees up the restrictions of model loading/deployment and memory/GPU management.</p>
+
+<p>These are some of the articles I wrote and collaborated on with colleagues over the last few months:</p>
+
+<h3 id="intro-to-large-language-models-with-cohere"><a href="https://docs.cohere.ai/intro-to-llms/">Intro to Large Language Models with Cohere</a></h3>
+<div class="row two-column-text">
+    <div class="col-md-6 col-xs-12">
+  <a href="https://docs.cohere.ai/intro-to-llms/"><img src="./Mohammed Kashif – Learn concepts from first principles._files/0a9715d-IntroToLLM_Visual_1.svg" class="small-image"></a>
+    </div>
+    <div class="col-md-6 col-xs-12">
+    <p>This is a high-level intro to large language models to people who are new to them. It establishes the difference between generative (GPT-like) and representation (BERT-like) models and examples use cases for them.</p>
+    <p>This is one of the first articles I got to write. It's extracted from a much larger document that I wrote to explore some of the visual language to use in explaining the application of these models.</p>
+    </div>
+</div>
+
+<h3 id="a-visual-guide-to-prompt-engineering-"><a href="https://docs.cohere.ai/prompt-engineering-wiki/">A visual guide to prompt engineering </a></h3>
+
+<div class="row two-column-text">
+    <div class="col-md-6 col-xs-12">
+  <a href="https://docs.cohere.ai/prompt-engineering-wiki/"><img src="./Mohammed Kashif – Learn concepts from first principles._files/db285b8-PromptEngineering_Visual_2.svg" class="small-image"></a>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <p>Massive GPT models open the door for a new way of programming. If you structure the input text in the right way, you can useful (and often fascinating) results for a lot of taasks (e.g. text classification, copy writing, summarization...etc).
+        </p>
+        <p>This article visually demonstrates four principals to create prompts effectively. </p>
+    </div>
+</div>
+
+<h3 id="-text-summarization"><a href="https://docs.cohere.ai/text-summarization-example/"> Text Summarization</a></h3>
+
+<div class="row two-column-text">
+    <div class="col-md-6 col-xs-12">
+  <a href="https://docs.cohere.ai/text-summarization-example/"><img src="./Mohammed Kashif – Learn concepts from first principles._files/296454c-TextSummarization_Visual_1.svg" class="small-image"></a>
+    </div>
+    <div class="col-md-6 col-xs-12">
+    <p>This is a walkthrough of creating a simple summarization system. It links to a jupyter notebook which includes the code to start experimenting with text generation and summarization.</p>
+    <p>The end of this notebook shows an important idea I want to spend more time on in the future. That of how to rank/filter/select the best from amongst multiple generations.</p>
+    </div>
+</div>
+
+<h3 id="semantic-search"><a href="https://docs.cohere.ai/semantic-search/">Semantic Search</a></h3>
+
+<div class="row two-column-text">
+    <div class="col-md-6 col-xs-12">
+  <a href="https://docs.cohere.ai/semantic-search/"><img src="./Mohammed Kashif – Learn concepts from first principles._files/4ec00e1-SemanticSearch_Visual_1.svg" class="small-image"></a>
+    </div>
+    <div class="col-md-6 col-xs-12">
+    <p>Semantic search has to be one of the most exciting applications of sentence embedding models. This tutorials implements a "similar questions" functionality using sentence embeddings and a a vector search library.</p>
+    <p>The vector search library used here is <a href="https://github.com/spotify/annoy">Annoy</a> from Spotify. There are a bunch of others out there. <a href="https://github.com/facebookresearch/faiss">Faiss</a> is used widely. I experiment with <a href="https://github.com/lmcinnes/pynndescent">PyNNDescent</a> as well.</p>
+    </div>
+</div>
+
+<h3 id="-finetuning-representation-models"><a href="https://docs.cohere.ai/finetuning-representation-models/"> Finetuning Representation Models</a></h3>
+
+<div class="row two-column-text">
+    <div class="col-md-6 col-xs-12">
+  <a href="https://docs.cohere.ai/docs/training-a-representation-model"><img src="./Mohammed Kashif – Learn concepts from first principles._files/699aead-TrainingRepModels_Visual_4.svg" class="small-image"></a>
+    </div>
+    <div class="col-md-6 col-xs-12">
+    <p>Finetuning tends to lead to the best results language models can achieve. This article explains the intuitions around finetuning representation/sentence embedding models. I've added a couple more visuals to the <a href="https://twitter.com/JayAlammar/status/1490712428686024705">Twitter thread</a>.</p>
+<p>The research around this area is very interesting. I've highly enjoyed papers like <a href="https://arxiv.org/abs/1908.10084">Sentence BERT</a> and <a href="https://arxiv.org/abs/2007.00808">Approximate Nearest Neighbor Negative Contrastive Learning for Dense Text Retrieval</a></p>
+    </div>
+</div>
+
+<h3 id="controlling-generation-with-top-k--top-p"><a href="https://docs.cohere.ai/token-picking/">Controlling Generation with top-k &amp; top-p</a></h3>
+
+<div class="row two-column-text">
+    <div class="col-md-6 col-xs-12">
+  <a href="https://docs.cohere.ai/token-picking/"><img src="./Mohammed Kashif – Learn concepts from first principles._files/ab291f6-Top-KTop-P_Visual_4.svg" class="small-image"></a>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <p>This one is a little bit more technical. It explains the parameters you tweak to adjust a GPT's <i>decoding strategy</i> -- the method with which the system picks output tokens. 
+        </p>
+    </div>
+</div>
+
+<h3 id="text-classification-using-embeddings"><a href="https://docs.cohere.ai/text-classification-embeddings/">Text Classification Using Embeddings</a></h3>
+
+<div class="row two-column-text">
+    <div class="col-md-6 col-xs-12">
+  <a href="https://docs.cohere.ai/text-classification-embeddings/"><img src="./Mohammed Kashif – Learn concepts from first principles._files/ee56264-Controlling_Generation_with_Top-K__Top-P_Visual_1.svg" class="small-image"></a>
+    </div>
+    <div class="col-md-6 col-xs-12">
+        <p>
+        This is a walkthrough of one of the most common use cases of embedding models -- text classification. It is similar to <a href="http://127.0.0.1:4000/a-visual-guide-to-using-bert-for-the-first-time/">A Visual Guide to Using BERT for the First Time</a>, but uses Cohere's API.
+        </p>
+    </div>
+</div>
+
+<p>You can find these and upcoming articles in the <a href="https://docs.cohere.ai/">Cohere docs</a> and <a href="https://github.com/cohere-ai/notebooks">notebooks repo</a>. I have quite number of experiments and interesting workflows I’d love to be sharing in the coming weeks. So stay tuned!</p>
+
+      </div>
+
+      <a href="https://jalammar.github.io/applying-large-language-models-cohere/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/illustrated-retrieval-transformer/">The Illustrated Retrieval Transformer</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Discussion: <a href="https://github.com/jalammar/jalammar.github.io/discussions/21">Discussion Thread</a> for comments, corrections, or any feedback. </span>
+<br>
+<span class="discussion">Translations:  <a href="https://chloamme.github.io/2022/01/08/illustrated-retrieval-transformer-korean.html">Korean</a>, <a href="https://habr.com/ru/post/648705/">Russian</a>
+<br></span></p>
+
+<p><strong>Summary</strong>: The latest batch of language models can be much smaller yet achieve GPT-3 like performance by being able to query a database or search the web for information. A key indication is that building larger and larger models is not the only way to improve performance.</p>
+
+<h2 id="video">Video</h2>
+<iframe width="560" height="315" src="./Mohammed Kashif – Learn concepts from first principles._files/sMPq4cVS4kg.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="
+width: 100%;
+max-width: 560px;" allowfullscreen=""></iframe>
+
+<hr>
+
+<p>The last few years saw the rise of Large Language Models (LLMs) – machine learning models that rapidly improve how machines process and generate language. Some of the highlights since 2017 include:</p>
+
+<ul>
+  <li>The original <a href="https://jalammar.github.io/illustrated-transformer/">Transformer</a> breaks previous performance records for machine translation.</li>
+  <li><a href="https://jalammar.github.io/illustrated-bert/">BERT</a> popularizes the pre-training then finetuning process, as well as Transformer-based contextualized word embeddings. It then rapidly starts to power <a href="https://blog.google/products/search/search-language-understanding-bert/">Google Search</a> and <a href="https://azure.microsoft.com/en-us/blog/bing-delivers-its-largest-improvement-in-search-experience-using-azure-gpus/">Bing Search</a>.</li>
+  <li><a href="https://jalammar.github.io/illustrated-gpt2/">GPT-2</a> demonstrates the machine’s ability to write as well as humans do.</li>
+  <li>First <a href="https://arxiv.org/abs/1910.10683">T5</a>, then <a href="https://huggingface.co/bigscience/T0pp">T0</a> push the boundaries of transfer learning (training a model on one task, and then having it do well on other adjacent tasks) and posing a lot of different tasks as text-to-text tasks.</li>
+  <li><a href="https://jalammar.github.io/how-gpt3-works-visualizations-animations/">GPT-3</a> showed that massive scaling of generative models can lead to shocking emergent applications (the industry continues to train larger models like <a href="https://deepmind.com/research/publications/2021/scaling-language-models-methods-analysis-insights-from-training-gopher">Gopher</a>, <a href="https://www.microsoft.com/en-us/research/blog/using-deepspeed-and-megatron-to-train-megatron-turing-nlg-530b-the-worlds-largest-and-most-powerful-generative-language-model/">MT-NLG</a>…etc).</li>
+</ul>
+
+<p>For a while, it seemed like scaling larger and larger models is the main way to improve performance. Recent developments in the field, like DeepMind’s <a href="https://deepmind.com/research/publications/2021/improving-language-models-by-retrieving-from-trillions-of-tokens">RETRO Transformer</a> and OpenAI’s <a href="https://openai.com/blog/improving-factual-accuracy/">WebGPT</a>, reverse this trend by showing that smaller generative language models can perform on par with massive models if we augment them with a way to search/query for information.</p>
+
+<p>This article breaks down DeepMind’s RETRO (<strong>R</strong>etrieval-<strong>E</strong>nhanced <strong>TR</strong>ansf<strong>O</strong>rmer) and how it works. The model performs on par with GPT-3 despite being 4% its size (7.5 billion parameters vs. 185 billion for GPT-3 Da Vinci).</p>
+
+<div class="img-div">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/deepmind-retro-retrieval-transformer.png">
+  <br>
+  RETRO incorporates information retrieved from a database to free its parameters from being an expensive store of facts and world knowledge.
+</div>
+
+<p>RETRO was presented in the paper <a href="https://arxiv.org/abs/2112.04426">Improving Language Models by Retrieving from Trillions of Tokens</a>. It continues and builds on a wide variety of retrieval <a href="http://www.crm.umontreal.ca/2018/Langue18/pdf/Cheung.pdf">work</a> <a href="https://ai.facebook.com/blog/retrieval-augmented-generation-streamlining-the-creation-of-intelligent-natural-language-processing-models/">in</a> <a href="https://openreview.net/forum?id=HklBjCEKvH">the</a> <a href="https://arxiv.org/abs/2102.02557">research</a> <a href="https://openreview.net/forum?id=B184E5qee">community</a>. This article explains the model and not what is especially novel about it.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/illustrated-retrieval-transformer/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/explainable-ai/">Explainable AI Cheat Sheet</a></h1>
+
+      <div class="entry">
+        <p>Introducing the <a href="https://ex.pegg.io/">Explainable AI Cheat Sheet</a>, your high-level guide to the set of tools and methods that helps humans understand AI/ML models and their predictions.</p>
+
+<p><a href="https://ex.pegg.io/"> <img src="./Mohammed Kashif – Learn concepts from first principles._files/Explainable-AI-cheat-sheet-v0.2.1080.png"></a></p>
+
+<p>I introduce the cheat sheet in this brief video:</p>
+
+<div style="text-align:center">
+ 
+ <iframe width="560" height="315" src="./Mohammed Kashif – Learn concepts from first principles._files/Yg3q5x7yDeM.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="
+ width: 100%;
+ max-width: 560px;" allowfullscreen=""></iframe>
+</div>
+
+      </div>
+
+      <a href="https://jalammar.github.io/explainable-ai/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/hidden-states/">Finding the Words to Say: Hidden State Visualizations for Language Models</a></h1>
+
+      <div class="entry">
+        <script>
+window.ecco = {};
+
+let dataPath = '/data/';
+let ecco_url = '/assets/';
+</script>
+
+<script type="module">
+/* let dataPath = '/data/';
+let ecco_url = '/assets/'; */
+import * as explainingApp from "/js/explaining-app.js";
+ if (window.location.pathname =='/hidden-states/'){
+    explainingApp.citations();
+ }
+</script>
+
+<link id="css" rel="stylesheet" type="text/css" href="./Mohammed Kashif – Learn concepts from first principles._files/styles.css">
+
+<style>
+    .toc li{
+        margin-bottom:0px;
+        list-style-type: none;
+    }
+    .toc{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        font-size:80%;
+
+    }
+    .toc ul{
+        margin-top: 0;
+    }
+
+    .toc h3{
+        /*font-size:90%;*/
+        margin-bottom:5px;
+    }
+
+</style>
+
+<p>By visualizing the hidden state between a model's layers, we can get some clues as to the model's "thought process".</p>
+<div style="background: hsl(0, 0%, 97%);;
+border-top: 1px solid rgba(0, 0, 0, 0.1);;" class="l-screen">
+
+<div class="l-page">
+<figure style="text-align: center; padding: 15px">
+<img src="./Mohammed Kashif – Learn concepts from first principles._files/rankings-gpt2xl.png" style="border:1px solid #bbb; width: 90%; margin: 0 auto; text-align: center">
+        <figcaption style="text-align:left">
+            <strong>Figure: Finding the words to say</strong><br>
+            After a language model generates a sentence, we can visualize a view of how the model came by each word (column).  Each row is a model layer. The value and color indicate the ranking of the output token at that layer. The darker the color, the higher the ranking. Layer 0 is at the top. Layer 47 is at the bottom.<br>
+            <strong>Model:</strong>GPT2-XL<br>
+        </figcaption>
+    
+</figure>
+    </div>
+</div>
+
+<p>Part 2: Continuing the pursuit of making Transformer language models more transparent, this article showcases a collection of visualizations to uncover mechanics of language generation inside a pre-trained language model. These visualizations are all created using <a href="https://www.eccox.io/">Ecco</a>, the open-source package we're releasing
+
+</p><p>In the first part of this series, <a href="https://jalammar.github.io/explaining-transformers/">Interfaces for Explaining Transformer Language Models</a>, we showcased interactive interfaces for input saliency and neuron activations. In this article, we will focus on the hidden state as it evolves from model layer to the next. By looking at the hidden states produced by every transformer decoder block, we aim to gleam information about how a language model arrived at a specific output token. This method is explored by Voita et al.<cite key="voita2019bottom"></cite>. Nostalgebraist <cite key="nostalgebraist2020"></cite>
+        presents compelling visual treatments showcasing the evolution of token rankings, logit scores, and softmax
+        probabilities for the evolving hidden state through the various layers of the model.
+    </p>
+
+
+
+<p></p>
+
+      </div>
+
+      <a href="https://jalammar.github.io/hidden-states/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/explaining-transformers/">Interfaces for Explaining Transformer Language Models</a></h1>
+
+      <div class="entry">
+        <script>
+window.ecco = {};
+
+// let dataPath = '/data/';
+// let ecco_url = '/assets/';
+
+
+</script>
+
+<script type="module">
+
+// let dataPath = '/data/';
+// let ecco_url = '/assets/';
+import * as explainingApp from "/js/explaining-app.js";
+
+function showRefreshWarning(){
+    var warning = document.getElementById("warning");
+    warning.style.display = "block";
+    warning.innerHTML = 'Please refresh the page. There was an error loading the scripts on the page. If the error presists, please let me know on <a href="https://github.com/jalammar/ecco/discussions/11">Github</a>.'
+}
+
+// Show the hero explorables, even in homepage preview
+explainingApp.vizHeroSaliency();
+explainingApp.vizHeroFactors();
+        
+// 
+// Only process citations on the page, not in homepage preview
+ if (window.location.pathname =='/explaining-transformers/'){
+    try{
+        explainingApp.vizShakespeare();
+        explainingApp.EUSaliency();
+        explainingApp.vizOnes();
+        explainingApp.vizAnswer();
+        explainingApp.saliencyFormulas();
+        explainingApp.vizCounting();
+        explainingApp.vizCountingTwoFactors();
+        explainingApp.vizCountingFiveFactors();
+        explainingApp.vizEUFactors();
+        explainingApp.vizXMLFactors();
+        explainingApp.vizPianoFactors();
+    }
+    catch(err){
+        showRefreshWarning()
+    }
+    
+    explainingApp.citations();
+ }
+
+</script>
+
+<link id="css" rel="stylesheet" type="text/css" href="./Mohammed Kashif – Learn concepts from first principles._files/styles.css">
+
+<link rel="stylesheet" href="./Mohammed Kashif – Learn concepts from first principles._files/katex(1).min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+
+<style>
+    .toc li{
+        margin-bottom:0px;
+        list-style-type: none;
+    }
+    .toc{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        font-size:80%;
+
+    }
+    .toc ul{
+        margin-top: 0;
+    }
+
+    .toc h3{
+        /*font-size:90%;*/
+        margin-bottom:5px;
+    }
+
+</style>
+
+<div id="warning" style="background-color: #ffffc9; border: 1px solid #666; font-size:80%; padding:10px;display:none"></div>
+
+<p>Interfaces for exploring transformer language models by looking at input saliency and neuron activation.</p>
+
+<div style="background: hsl(0, 0%, 97%);;
+border-top: 1px solid rgba(0, 0, 0, 0.1);;" class="l-screen">
+
+<div class="l-page">
+<figure>
+    <figcaption style="margin-top:20px">
+        <strong>Explorable #1:</strong>  Input saliency of a list of countries generated by a language model<br>
+         <strong style="color:purple">Tap or hover over</strong> the <strong>output tokens</strong>:<br><br>
+    </figcaption>
+    <div id="viz_hero_saliency" class="ecco fig" style="max-width: 700px"><div class="minimal"><div token="1" id="t0" position="0" value="0.11275883764028549" class="token input-token" style="color: black; background-color: rgb(215, 174, 215);"><span style="color: black;">1</span></div><div token="." id="t1" position="1" value="0.05002360790967941" class="token input-token" style="color: black; background-color: rgb(237, 219, 237);"><span style="color: black;">.</span></div><div token=" Austria" id="t2" position="2" value="0.28358811140060425" class="token input-token" style="color: white; background-color: rgb(154, 52, 154);"><span style="color: white;"> Austria</span></div><div token=" 2" id="t3" position="3" value="0.07143381983041763" class="token input-token" style="color: black; background-color: rgb(230, 204, 230);"><span style="color: black;"> 2</span></div><div token="." id="t4" position="4" value="0.05797737464308739" class="token input-token" style="color: black; background-color: rgb(234, 214, 234);"><span style="color: black;">.</span></div><div token=" Belgium" id="t5" position="5" value="0.35651496052742004" class="token input-token" style="color: white; background-color: rgb(128, 0, 128);"><span style="color: white;"> Belgium</span></div><div token=" 3" id="t6" position="6" value="0.03522523120045662" class="token input-token" style="color: black; background-color: rgb(242, 230, 242);"><span style="color: black;"> 3</span></div><div token="." id="t7" position="7" value="0.03247808665037155" class="token input-token" style="color: black; background-color: rgb(243, 232, 243);"><span style="color: black;">.</span></div><div class="sequence-indicator outputs-indicator">&gt;&gt;</div><div token=" Brazil" id="t8" position="8" value="0" class="token output-token selected" highlighted="true" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;"> Brazil</span></div><div token=" 4" id="t9" position="9" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;"> 4</span></div><div token="." id="t10" position="10" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;">.</span></div><div token=" Hungary" id="t11" position="11" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;"> Hungary</span></div><div token=" 5" id="t12" position="12" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;"> 5</span></div><div token="." id="t13" position="13" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;">.</span></div><div token=" Romania" id="t14" position="14" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;"> Romania</span></div><div token=" 6" id="t15" position="15" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;"> 6</span></div><div token="." id="t16" position="16" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;">.</span></div><div token=" Luxembourg" id="t17" position="17" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;"> Luxembourg</span></div><div token=" 7" id="t18" position="18" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;"> 7</span></div><div token="." id="t19" position="19" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;">.</span></div><div token=" Slovakia" id="t20" position="20" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;"> Slovakia</span></div><div token=" 8" id="t21" position="21" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;"> 8</span></div><div token="." id="t22" position="22" value="0" class="token output-token" style="color: black; background-color: rgb(255, 255, 255);"><span style="color: black;">.</span></div></div></div>
+    <br style="clear:both">
+    <figcaption style="margin-top:20px">
+    <br>
+        <strong>Explorable #2:</strong>  Neuron activation analysis reveals four groups of neurons, each is associated with generating a certain type of token<br>
+        <strong style="color:purple">Tap or hover over</strong> the sparklines on the left to isolate a certain factor:<br><br>
+    </figcaption>
+    <div id="viz_hero_factors" class="ecco fig" style="width:100%; max-width: 700px; margin:5px auto"><div id="activation-sparklines" style="float: left; width: 25%;"><svg viewBox="0,0,290,200"><g transform="translate(0, 50)"><text fill="rgb(110, 64, 170)" font-size="20px">1</text><path fill="none" stroke-width="2" stroke="rgb(110, 64, 170)" d="M30,-23.8347920978064C30,-23.8347920978064,36.666666666666664,-4.1743829345546954,40,-0.22229615924516358C43.333333333333336,3.7297906160643683,46.666666666666664,-0.13129389231233815,50,-0.12227144594920544C53.333333333333336,-0.11324899958607275,56.666666666666664,-0.16920669993941376,60,-0.16816148106636739C63.333333333333336,-0.167116262193321,66.66666666666667,-0.12733718386501747,70,-0.11600013271092716C73.33333333333333,-0.10466308155683683,76.66666666666667,-0.11756460365760506,80,-0.10013917414182544C83.33333333333333,-0.08271374462604582,86.66666666666667,-0.028137417973220336,90,-0.011447555616249432C93.33333333333333,0.005242306740721472,96.66666666666667,-0.001907925936041572,100,0C103.33333333333333,0.001907925936041572,106.66666666666667,0.0007761010894022861,110,0C113.33333333333333,-0.0007761010894022861,116.66666666666667,-0.004656606536413717,120,-0.004656606536413717C123.33333333333333,-0.004656606536413717,126.66666666666667,-0.0007761010894022861,130,0C133.33333333333334,0.0007761010894022861,136.66666666666666,0,140,0C143.33333333333334,0,146.66666666666666,0,150,0C153.33333333333334,0,156.66666666666666,0,160,0C163.33333333333334,0,166.66666666666666,0,170,0C173.33333333333334,0,176.66666666666666,0,180,0C183.33333333333334,0,186.66666666666666,0,190,0C193.33333333333334,0,196.66666666666666,0,200,0C203.33333333333334,0,206.66666666666666,0,210,0C213.33333333333334,0,216.66666666666666,0,220,0C223.33333333333334,0,226.66666666666669,0,230,0C233.33333333333331,0,236.66666666666663,0,239.99999999999997,0C243.33333333333331,0,250.00000000000003,0,250.00000000000003,0"></path><path fill="none" opacity="0" stroke-width="30" stroke="rgb(110, 64, 170)" d="M30,-23.8347920978064C30,-23.8347920978064,36.666666666666664,-4.1743829345546954,40,-0.22229615924516358C43.333333333333336,3.7297906160643683,46.666666666666664,-0.13129389231233815,50,-0.12227144594920544C53.333333333333336,-0.11324899958607275,56.666666666666664,-0.16920669993941376,60,-0.16816148106636739C63.333333333333336,-0.167116262193321,66.66666666666667,-0.12733718386501747,70,-0.11600013271092716C73.33333333333333,-0.10466308155683683,76.66666666666667,-0.11756460365760506,80,-0.10013917414182544C83.33333333333333,-0.08271374462604582,86.66666666666667,-0.028137417973220336,90,-0.011447555616249432C93.33333333333333,0.005242306740721472,96.66666666666667,-0.001907925936041572,100,0C103.33333333333333,0.001907925936041572,106.66666666666667,0.0007761010894022861,110,0C113.33333333333333,-0.0007761010894022861,116.66666666666667,-0.004656606536413717,120,-0.004656606536413717C123.33333333333333,-0.004656606536413717,126.66666666666667,-0.0007761010894022861,130,0C133.33333333333334,0.0007761010894022861,136.66666666666666,0,140,0C143.33333333333334,0,146.66666666666666,0,150,0C153.33333333333334,0,156.66666666666666,0,160,0C163.33333333333334,0,166.66666666666666,0,170,0C173.33333333333334,0,176.66666666666666,0,180,0C183.33333333333334,0,186.66666666666666,0,190,0C193.33333333333334,0,196.66666666666666,0,200,0C203.33333333333334,0,206.66666666666666,0,210,0C213.33333333333334,0,216.66666666666666,0,220,0C223.33333333333334,0,226.66666666666669,0,230,0C233.33333333333331,0,236.66666666666663,0,239.99999999999997,0C243.33333333333331,0,250.00000000000003,0,250.00000000000003,0"></path></g><g transform="translate(0, 90)"><text fill="rgb(255, 94, 99)" font-size="20px">2</text><path fill="none" stroke-width="2" stroke="rgb(255, 94, 99)" d="M30,0C30,0,36.666666666666664,-0.5083265290778729,40,-2.2207047925225805C43.333333333333336,-3.933083055967288,46.666666666666664,-10.145294597557786,50,-10.274269580668246C53.333333333333336,-10.403244563778706,56.666666666666664,-4.649062032246251,60,-2.9945546911853365C63.333333333333336,-1.3400473501244226,66.66666666666667,0.8781457312953769,70,-0.34722553430276276C73.33333333333333,-1.5725967999009025,76.66666666666667,-10.315212179952622,80,-10.346782284774175C83.33333333333333,-10.378352389595728,86.66666666666667,-2.26110987736111,90,-0.5366461632320806C93.33333333333333,1.1878175508969484,96.66666666666667,-0.08944102720534676,100,0C103.33333333333333,0.08944102720534676,106.66666666666667,1.8500324708095992,110,0C113.33333333333333,-1.8500324708095992,116.66666666666667,-11.100194824857596,120,-11.100194824857596C123.33333333333333,-11.100194824857596,126.66666666666667,-1.8500324708095992,130,0C133.33333333333334,1.8500324708095992,136.66666666666666,2.1207077816752684,140,0C143.33333333333334,-2.1207077816752684,146.66666666666666,-12.724246690051611,150,-12.724246690051611C153.33333333333334,-12.724246690051611,156.66666666666666,-2.119803438622459,160,0C163.33333333333334,2.119803438622459,166.66666666666666,2.326406985333631,170,-0.005426058316857803C173.33333333333334,-2.337259101967347,176.66666666666666,-13.991902604955744,180,-13.990998261902934C183.33333333333334,-13.990093918850125,186.66666666666666,-2.331833043650489,190,0C193.33333333333334,2.331833043650489,196.66666666666666,2.175744624017171,200,0C203.33333333333334,-2.175744624017171,206.66666666666666,-13.054467744103027,210,-13.054467744103027C213.33333333333334,-13.054467744103027,216.66666666666666,-2.175744624017171,220,0C223.33333333333334,2.175744624017171,226.66666666666669,2.29758232196884,230,0C233.33333333333331,-2.29758232196884,236.66666666666663,-13.78549393181304,239.99999999999997,-13.78549393181304C243.33333333333331,-13.78549393181304,250.00000000000003,0,250.00000000000003,0"></path><path fill="none" opacity="0" stroke-width="30" stroke="rgb(255, 94, 99)" d="M30,0C30,0,36.666666666666664,-0.5083265290778729,40,-2.2207047925225805C43.333333333333336,-3.933083055967288,46.666666666666664,-10.145294597557786,50,-10.274269580668246C53.333333333333336,-10.403244563778706,56.666666666666664,-4.649062032246251,60,-2.9945546911853365C63.333333333333336,-1.3400473501244226,66.66666666666667,0.8781457312953769,70,-0.34722553430276276C73.33333333333333,-1.5725967999009025,76.66666666666667,-10.315212179952622,80,-10.346782284774175C83.33333333333333,-10.378352389595728,86.66666666666667,-2.26110987736111,90,-0.5366461632320806C93.33333333333333,1.1878175508969484,96.66666666666667,-0.08944102720534676,100,0C103.33333333333333,0.08944102720534676,106.66666666666667,1.8500324708095992,110,0C113.33333333333333,-1.8500324708095992,116.66666666666667,-11.100194824857596,120,-11.100194824857596C123.33333333333333,-11.100194824857596,126.66666666666667,-1.8500324708095992,130,0C133.33333333333334,1.8500324708095992,136.66666666666666,2.1207077816752684,140,0C143.33333333333334,-2.1207077816752684,146.66666666666666,-12.724246690051611,150,-12.724246690051611C153.33333333333334,-12.724246690051611,156.66666666666666,-2.119803438622459,160,0C163.33333333333334,2.119803438622459,166.66666666666666,2.326406985333631,170,-0.005426058316857803C173.33333333333334,-2.337259101967347,176.66666666666666,-13.991902604955744,180,-13.990998261902934C183.33333333333334,-13.990093918850125,186.66666666666666,-2.331833043650489,190,0C193.33333333333334,2.331833043650489,196.66666666666666,2.175744624017171,200,0C203.33333333333334,-2.175744624017171,206.66666666666666,-13.054467744103027,210,-13.054467744103027C213.33333333333334,-13.054467744103027,216.66666666666666,-2.175744624017171,220,0C223.33333333333334,2.175744624017171,226.66666666666669,2.29758232196884,230,0C233.33333333333331,-2.29758232196884,236.66666666666663,-13.78549393181304,239.99999999999997,-13.78549393181304C243.33333333333331,-13.78549393181304,250.00000000000003,0,250.00000000000003,0"></path></g><g transform="translate(0, 130)"><text fill="rgb(175, 240, 91)" font-size="20px">3</text><path fill="none" stroke-width="2" stroke="rgb(175, 240, 91)" d="M30,0C30,0,36.666666666666664,-10.296342982831582,40,-10.421620069419552C43.333333333333336,-10.546897156007521,46.666666666666664,-1.8540588015186883,50,-0.7516625195278199C53.333333333333336,0.35073376246304844,56.666666666666664,-0.8155433207300389,60,-3.807242377474341C63.333333333333336,-6.798941434218643,66.66666666666667,-19.16359136883403,70,-18.701856859993633C73.33333333333333,-18.240122351153236,76.66666666666667,-3.8550762933612406,80,-1.0368353244319513C83.33333333333333,1.7814056444973378,86.66666666666667,2.0347830661767765,90,-1.792411046417898C93.33333333333333,-5.619605159012572,96.66666666666667,-20.29873517440298,100,-24C103.33333333333333,-27.70126482559702,106.66666666666667,-27.794336545140634,110,-24C113.33333333333333,-20.205663454859366,116.66666666666667,-5.1334967907181595,120,-1.233980729156187C123.33333333333333,2.665535332405785,126.66666666666667,3.126936770146827,130,-0.6029036306281668C133.33333333333334,-4.33274403140316,136.66666666666666,-23.63282116251377,140,-23.61302313380615C143.33333333333334,-23.593225105098526,146.66666666666666,-4.419619314016782,150,-0.4841154583824246C153.33333333333334,3.4513883972519332,156.66666666666666,3.9094884721380745,160,0C163.33333333333334,-3.9094884721380745,166.66666666666666,-23.941046291210874,170,-23.941046291210874C173.33333333333334,-23.941046291210874,176.66666666666666,-3.9901743818684787,180,0C183.33333333333334,3.9901743818684787,186.66666666666666,3.864826044147881,190,0C193.33333333333334,-3.864826044147881,196.66666666666666,-23.188956264887285,200,-23.188956264887285C203.33333333333334,-23.188956264887285,206.66666666666666,-3.864826044147881,210,0C213.33333333333334,3.864826044147881,216.66666666666666,3.7855235749338765,220,0C223.33333333333334,-3.7855235749338765,226.66666666666669,-22.71314144960326,230,-22.71314144960326C233.33333333333331,-22.71314144960326,236.66666666666663,-3.7855235749338765,239.99999999999997,0C243.33333333333331,3.7855235749338765,250.00000000000003,0,250.00000000000003,0"></path><path fill="none" opacity="0" stroke-width="30" stroke="rgb(175, 240, 91)" d="M30,0C30,0,36.666666666666664,-10.296342982831582,40,-10.421620069419552C43.333333333333336,-10.546897156007521,46.666666666666664,-1.8540588015186883,50,-0.7516625195278199C53.333333333333336,0.35073376246304844,56.666666666666664,-0.8155433207300389,60,-3.807242377474341C63.333333333333336,-6.798941434218643,66.66666666666667,-19.16359136883403,70,-18.701856859993633C73.33333333333333,-18.240122351153236,76.66666666666667,-3.8550762933612406,80,-1.0368353244319513C83.33333333333333,1.7814056444973378,86.66666666666667,2.0347830661767765,90,-1.792411046417898C93.33333333333333,-5.619605159012572,96.66666666666667,-20.29873517440298,100,-24C103.33333333333333,-27.70126482559702,106.66666666666667,-27.794336545140634,110,-24C113.33333333333333,-20.205663454859366,116.66666666666667,-5.1334967907181595,120,-1.233980729156187C123.33333333333333,2.665535332405785,126.66666666666667,3.126936770146827,130,-0.6029036306281668C133.33333333333334,-4.33274403140316,136.66666666666666,-23.63282116251377,140,-23.61302313380615C143.33333333333334,-23.593225105098526,146.66666666666666,-4.419619314016782,150,-0.4841154583824246C153.33333333333334,3.4513883972519332,156.66666666666666,3.9094884721380745,160,0C163.33333333333334,-3.9094884721380745,166.66666666666666,-23.941046291210874,170,-23.941046291210874C173.33333333333334,-23.941046291210874,176.66666666666666,-3.9901743818684787,180,0C183.33333333333334,3.9901743818684787,186.66666666666666,3.864826044147881,190,0C193.33333333333334,-3.864826044147881,196.66666666666666,-23.188956264887285,200,-23.188956264887285C203.33333333333334,-23.188956264887285,206.66666666666666,-3.864826044147881,210,0C213.33333333333334,3.864826044147881,216.66666666666666,3.7855235749338765,220,0C223.33333333333334,-3.7855235749338765,226.66666666666669,-22.71314144960326,230,-22.71314144960326C233.33333333333331,-22.71314144960326,236.66666666666663,-3.7855235749338765,239.99999999999997,0C243.33333333333331,3.7855235749338765,250.00000000000003,0,250.00000000000003,0"></path></g><g transform="translate(0, 170)"><text fill="rgb(26, 199, 194)" font-size="20px">4</text><path fill="none" stroke-width="2" stroke="rgb(26, 199, 194)" d="M30,0C30,0,36.666666666666664,-1.236303097929693,40,-1.3383674059478838C43.333333333333336,-1.4404317139660747,46.666666666666664,0.18264341867654055,50,-0.6123858481091456C53.333333333333336,-1.4074151148948317,56.666666666666664,-5.988939948750522,60,-6.108543006662002C63.333333333333336,-6.228146064573481,66.66666666666667,-2.1253923262902767,70,-1.3300041955780246C73.33333333333333,-0.5346160648657724,76.66666666666667,0.8880205027721697,80,-1.3362142223884885C83.33333333333333,-3.5604489475491468,86.66666666666667,-14.898114916940058,90,-14.675412546541976C93.33333333333333,-14.452710176143894,96.66666666666667,-2.4459020910903293,100,0C103.33333333333333,2.4459020910903293,106.66666666666667,0.12575536136827348,110,0C113.33333333333333,-0.12575536136827348,116.66666666666667,2.0880559875750606,120,-0.7545321682096409C123.33333333333333,-3.597120323994343,126.66666666666667,-17.181284296076484,130,-17.05552893470821C133.33333333333334,-16.929773573339936,136.66666666666666,-2.807507664775385,140,0C143.33333333333334,2.807507664775385,146.66666666666666,2.769945059207994,150,-0.21048294605589582C153.33333333333334,-3.1909109513197853,156.66666666666666,-17.917648522592657,160,-17.88256803158334C163.33333333333334,-17.847487540574022,166.66666666666666,-2.9804280052638896,170,0C173.33333333333334,2.9804280052638896,176.66666666666666,2.9980489361555898,180,0C183.33333333333334,-2.9980489361555898,186.66666666666666,-17.973732598225336,190,-17.98829361693354C193.33333333333334,-18.002854635641743,196.66666666666666,-3.0854150484048146,200,-0.08736611224922479C203.33333333333334,2.910682823906365,206.66666666666666,3.0661706960610506,210,0C213.33333333333334,-3.0661706960610506,216.66666666666666,-18.48439028861553,220,-18.48439028861553C223.33333333333334,-18.48439028861553,226.66666666666669,-3.0807317147692546,230,0C233.33333333333331,3.0807317147692546,236.66666666666663,3.0836049446381595,239.99999999999997,0C243.33333333333331,-3.0836049446381595,250.00000000000003,-18.501629667828958,250.00000000000003,-18.501629667828958"></path><path fill="none" opacity="0" stroke-width="30" stroke="rgb(26, 199, 194)" d="M30,0C30,0,36.666666666666664,-1.236303097929693,40,-1.3383674059478838C43.333333333333336,-1.4404317139660747,46.666666666666664,0.18264341867654055,50,-0.6123858481091456C53.333333333333336,-1.4074151148948317,56.666666666666664,-5.988939948750522,60,-6.108543006662002C63.333333333333336,-6.228146064573481,66.66666666666667,-2.1253923262902767,70,-1.3300041955780246C73.33333333333333,-0.5346160648657724,76.66666666666667,0.8880205027721697,80,-1.3362142223884885C83.33333333333333,-3.5604489475491468,86.66666666666667,-14.898114916940058,90,-14.675412546541976C93.33333333333333,-14.452710176143894,96.66666666666667,-2.4459020910903293,100,0C103.33333333333333,2.4459020910903293,106.66666666666667,0.12575536136827348,110,0C113.33333333333333,-0.12575536136827348,116.66666666666667,2.0880559875750606,120,-0.7545321682096409C123.33333333333333,-3.597120323994343,126.66666666666667,-17.181284296076484,130,-17.05552893470821C133.33333333333334,-16.929773573339936,136.66666666666666,-2.807507664775385,140,0C143.33333333333334,2.807507664775385,146.66666666666666,2.769945059207994,150,-0.21048294605589582C153.33333333333334,-3.1909109513197853,156.66666666666666,-17.917648522592657,160,-17.88256803158334C163.33333333333334,-17.847487540574022,166.66666666666666,-2.9804280052638896,170,0C173.33333333333334,2.9804280052638896,176.66666666666666,2.9980489361555898,180,0C183.33333333333334,-2.9980489361555898,186.66666666666666,-17.973732598225336,190,-17.98829361693354C193.33333333333334,-18.002854635641743,196.66666666666666,-3.0854150484048146,200,-0.08736611224922479C203.33333333333334,2.910682823906365,206.66666666666666,3.0661706960610506,210,0C213.33333333333334,-3.0661706960610506,216.66666666666666,-18.48439028861553,220,-18.48439028861553C223.33333333333334,-18.48439028861553,226.66666666666669,-3.0807317147692546,230,0C233.33333333333331,3.0807317147692546,236.66666666666663,3.0836049446381595,239.99999999999997,0C243.33333333333331,-3.0836049446381595,250.00000000000003,-18.501629667828958,250.00000000000003,-18.501629667828958"></path></g><g transform="translate(0,170)" fill="none" font-size="10" font-family="sans-serif" text-anchor="middle"><path class="domain" stroke="currentColor" d="M30.5,6V0.5H260.5V6"></path><g class="tick" opacity="1" transform="translate(30.5,0)"><line stroke="currentColor" y2="6"></line><text fill="currentColor" y="9" dy="0.71em">0</text></g><g class="tick" opacity="1" transform="translate(80.5,0)"><line stroke="currentColor" y2="6"></line><text fill="currentColor" y="9" dy="0.71em">5</text></g><g class="tick" opacity="1" transform="translate(130.5,0)"><line stroke="currentColor" y2="6"></line><text fill="currentColor" y="9" dy="0.71em">10</text></g><g class="tick" opacity="1" transform="translate(180.5,0)"><line stroke="currentColor" y2="6"></line><text fill="currentColor" y="9" dy="0.71em">15</text></g><g class="tick" opacity="1" transform="translate(230.5,0)"><line stroke="currentColor" y2="6"></line><text fill="currentColor" y="9" dy="0.71em">20</text></g></g></svg></div><div style="float: left; width: 70%;"><div token="1" id="t0" position="0" value="0" class="token input-token" style="opacity: 1; background-color: rgb(110, 64, 170); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;">1</span></div><div token="." id="t1" position="1" value="0" class="token input-token" style="opacity: 1; background-color: rgb(220, 248, 184); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;">.</span></div><div token=" Austria" id="t2" position="2" value="0" class="token input-token" style="opacity: 1; background-color: rgb(255, 137, 140); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> Austria</span></div><div token=" 2" id="t3" position="3" value="0" class="token input-token" style="opacity: 1; background-color: rgb(179, 237, 235); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> 2</span></div><div token="." id="t4" position="4" value="0" class="token input-token" style="opacity: 1; background-color: rgb(193, 243, 127); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;">.</span></div><div token=" Belgium" id="t5" position="5" value="0" class="token input-token" style="opacity: 1; background-color: rgb(255, 136, 140); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> Belgium</span></div><div token=" 3" id="t6" position="6" value="0" class="token input-token" style="opacity: 1; background-color: rgb(73, 211, 207); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> 3</span></div><div token="." id="t7" position="7" value="0" class="token input-token" style="opacity: 1; background-color: rgb(175, 240, 91); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;">.</span></div><div class="sequence-indicator outputs-indicator">&gt;&gt;</div><div token=" Brazil" id="t8" position="8" value="0" class="token output-token" style="opacity: 1; background-color: rgb(175, 240, 91); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> Brazil</span></div><div token=" 4" id="t9" position="9" value="0" class="token output-token" style="opacity: 1; background-color: rgb(255, 127, 131); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> 4</span></div><div token="." id="t10" position="10" value="0" class="token output-token" style="opacity: 1; background-color: rgb(44, 203, 199); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;">.</span></div><div token=" Hungary" id="t11" position="11" value="0" class="token output-token" style="opacity: 1; background-color: rgb(176, 240, 94); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> Hungary</span></div><div token=" 5" id="t12" position="12" value="0" class="token output-token" style="opacity: 1; background-color: rgb(255, 109, 113); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> 5</span></div><div token="." id="t13" position="13" value="0" class="token output-token" style="opacity: 1; background-color: rgb(34, 201, 196); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;">.</span></div><div token=" Romania" id="t14" position="14" value="0" class="token output-token" style="opacity: 1; background-color: rgb(175, 240, 91); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> Romania</span></div><div token=" 6" id="t15" position="15" value="0" class="token output-token" style="opacity: 1; background-color: rgb(255, 94, 99); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> 6</span></div><div token="." id="t16" position="16" value="0" class="token output-token" style="opacity: 1; background-color: rgb(32, 201, 196); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;">.</span></div><div token=" Luxembourg" id="t17" position="17" value="0" class="token output-token" style="opacity: 1; background-color: rgb(178, 241, 97); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> Luxembourg</span></div><div token=" 7" id="t18" position="18" value="0" class="token output-token" style="opacity: 1; background-color: rgb(255, 105, 109); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> 7</span></div><div token="." id="t19" position="19" value="0" class="token output-token" style="opacity: 1; background-color: rgb(26, 199, 194); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;">.</span></div><div token=" Slovakia" id="t20" position="20" value="0" class="token output-token" style="opacity: 1; background-color: rgb(179, 241, 100); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> Slovakia</span></div><div token=" 8" id="t21" position="21" value="0" class="token output-token" style="opacity: 1; background-color: rgb(255, 96, 101); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;"> 8</span></div><div token="." id="t22" position="22" value="0" class="token output-token" style="opacity: 1; background-color: rgb(26, 199, 194); border-color: white;"><span style="color: rgb(0, 0, 0); padding-left: 4px;">.</span></div></div></div>
+    <br style="clear:both">
+</figure>
+    </div>
+</div>
+
+<!--
+<div class="toc">
+    <h3>Contents</h3>
+    <ul>
+        <li>
+            <a href="#introduction">Introduction</a>
+        </li>
+        <li>
+            <a href="#saliency">Input Saliency</a>
+        </li>
+        <li>
+            <a href="#evolution">Evolution of Hidden States</a>
+        </li>
+        <li>
+            <a href="#activations">Neuron Activations</a>
+        </li>
+        <li>
+            <a href="#conclusion">Conclusion & Future Work</a>
+        </li>
+    </ul>
+</div>
+-->
+
+<p id="introduction">The Transformer architecture<cite key="vaswani2017attention"></cite>
+    has been powering a number of the recent advances in NLP. A breakdown of this architecture is provided <a href="https://jalammar.github.io/illustrated-transformer/">here</a> <cite key="alammar2018illustrated"></cite>. Pre-trained language models based on the architecture,
+    in both its auto-regressive<cite key="liu2018generating,radford2018improving,radford2019language,brown2020language"></cite> (models that use their own output as input to next time-steps and that process tokens from left-to-right, like GPT2)
+    and denoising<cite key="devlin2018bert,liu2019roberta,lan2019albert,lewis2019bart,raffel2019exploring"></cite> (models trained by corrupting/masking the input and that process tokens bidirectionally, like BERT)
+    variants continue to push the envelope in various tasks in NLP and, more recently, in computer vision<cite key="dosovitskiy2020image"></cite>. Our understanding of why these models work so well, however, still lags behind these developments.
+</p>
+
+<p>This exposition series continues the pursuit to interpret<cite key="rogers2020primer,atanasova2020diagnostic"></cite>
+    and visualize<cite key="vig2019visualizing,madsen2019visualizing,hoover2020,tenney2020language,wallace2019allennlp"></cite>
+    the inner-workings of transformer-based language models.
+
+We illustrate how some key interpretability methods apply to transformer-based language models. This article focuses on auto-regressive models, but these methods are applicable to other architectures and tasks as well.
+     
+</p>
+
+<p>This is the first article in the series. In it, we present explorables and visualizations aiding the intuition of:</p>
+<ul>
+    <li>
+        <strong>Input Saliency</strong> methods that score input tokens importance to generating a token.
+    </li>
+    <li>
+        <strong>Neuron Activations</strong> and how individual and groups of model neurons spike in response to
+        inputs and to produce outputs.
+    </li>
+</ul>
+
+<p>The next article addresses <strong>Hidden State Evolution</strong> across the layers of the model and what it may tell us about each layer's role.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/explaining-transformers/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/how-gpt3-works-visualizations-animations/">How GPT3 Works - Visualizations and Animations</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Discussions:
+<a href="https://news.ycombinator.com/item?id=23967887" class="hn-link">Hacker News (397 points, 97 comments)</a>, <a href="https://www.reddit.com/r/MachineLearning/comments/hwxn26/p_how_gpt3_works_visuals_and_animations/" class="">Reddit r/MachineLearning (247 points, 27 comments)</a>
+</span>
+<br>
+<span class="discussion">Translations: <a href="https://www.arnevogel.com/wie-gpt3-funktioniert/">German</a>, <a href="https://chloamme.github.io/2021/12/18/how-gpt3-works-visualizations-animations-korean.html">Korean</a>, <a href="https://blogcn.acacess.com/how-gpt3-works-visualizations-and-animations-zhong-yi">Chinese (Simplified)</a>, <a href="https://habr.com/ru/post/514698/">Russian</a>, <a href="https://devrimdanyal.medium.com/g%C3%B6rselle%C5%9Ftirmeler-ve-animasyonlar-ile-gpt3-nas%C4%B1l-%C3%A7al%C4%B1%C5%9F%C4%B1r-e7891ed3fa88">Turkish</a></span>
+<br></p>
+
+<p>The tech world is <a href="https://www.theverge.com/21346343/gpt-3-explainer-openai-examples-errors-agi-potential">abuzz</a> with GPT3 hype. Massive language models (like GPT3) are starting to surprise us with their abilities. While not yet completely reliable for most businesses to put in front of their customers, these models are showing sparks of cleverness that are sure to accelerate the march of automation and the possibilities of intelligent computer systems. Let’s remove the aura of mystery around GPT3 and learn how it’s trained and how it works.</p>
+
+<div style="text-align:center">
+<iframe width="560" height="315" src="./Mohammed Kashif – Learn concepts from first principles._files/MQnJZuBGmSQ.html" title="YouTube video player" frameborder="0" style="
+ width: 100%;
+ max-width: 560px;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<p>A trained language model generates text.</p>
+
+<p>We can optionally pass it some text as input, which influences its output.</p>
+
+<p>The output is generated from what the model “learned” during its training period where it scanned vast amounts of text.</p>
+
+<div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/01-gpt3-language-model-overview.gif">
+  <br>
+
+</div>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/how-gpt3-works-visualizations-animations/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/jays-intro-to-ai/">YouTube Series - Jay's Intro to AI</a></h1>
+
+      <div class="entry">
+        <div style="text-align:center">
+<iframe width="560" height="315" src="./Mohammed Kashif – Learn concepts from first principles._files/mSTCzNgDJy4.html" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" style="
+width: 100%;
+max-width: 560px;" allowfullscreen=""></iframe>
+</div>
+
+<p>Check out the first video in my new series introducing the general public to AI and machine learning.</p>
+
+<p>My aim for this series is to help people integrate ML into their world-view away from all the hype and overpromises that plauge the topic.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/jays-intro-to-ai/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/qcon-2020-intro-to-ai/">QCon 2020 - Visual Intro to Machine Learning and Deep Learning</a></h1>
+
+      <div class="entry">
+        <div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/jay-alammar-introduction-artificial-intelligence-machine-learning.jpg">
+  <br>
+</div>
+
+<p>I had an incredible time organizing and speaking at the AI/machine learning track at <a href="https://qconlondon.com/">QCon London 2020</a> where I invited and shared the stage with incredible speakers <a href="https://twitter.com/fishnets88">Vincent Warmerdam</a>, <a href="https://www.linkedin.com/in/susanne-groothuis/">Susanne Groothuis</a>, <a href="https://www.linkedin.com/in/peterelger/">Peter Elger</a>, and <a href="https://www.linkedin.com/in/hienluu/">Hien Luu</a>.</p>
+
+<p>QCon is a global software conference for software engineers, architects, and team leaders, with over 1,600 attendees in London. All speakers have a software background.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/qcon-2020-intro-to-ai/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/a-visual-guide-to-using-bert-for-the-first-time/">A Visual Guide to Using BERT for the First Time</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Translations: <a href="http://www.junphy.com/wordpress/index.php/2020/10/20/a-visual-guide-using-bert/">Chinese</a>, <a href="https://chloamme.github.io/2021/12/22/a-visual-guide-to-using-bert-for-the-first-time-korean.html">Korean</a>, <a href="https://habr.com/ru/post/498144/">Russian</a></span></p>
+
+<div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/bert-distilbert-sentence-classification.png">
+  <br>
+</div>
+
+<p>Progress has been rapidly accelerating in machine learning models that process language over the last couple of years. This progress has left the research lab and started powering some of the leading digital products. A great example of this is the <a href="https://www.blog.google/products/search/search-language-understanding-bert/">recent announcement of how the BERT model is now a major force behind Google Search</a>. Google believes this step (or progress in natural language understanding as applied in search) represents “the biggest leap forward in the past five years, and one of the biggest leaps forward in the history of Search”.</p>
+
+<p>This post is a simple tutorial for how to use a variant of BERT to classify sentences. This is an example that is basic enough as a first intro, yet advanced enough to showcase some of the key concepts involved.</p>
+
+<p>Alongside this post, I’ve prepared a notebook. You can see it here <a href="https://github.com/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb">the notebook</a> or <a href="https://colab.research.google.com/github/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb">run it on colab</a>.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/a-visual-guide-to-using-bert-for-the-first-time/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/mit-analytics-lab-talk/">Language Models and Skipgram Recommenders Talk @ MIT</a></h1>
+
+      <div class="entry">
+        <div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/jay-alammar-mit-analytics-lab-language-models-nlp.jpg">
+  <br>
+</div>
+
+<p>I had a great time speaking at the MIT Analytics Lab about some of my favorite ideas in natural language processing and their practical applications.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/mit-analytics-lab-talk/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/illustrated-gpt2/">The Illustrated GPT-2 (Visualizing Transformer Language Models)</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Discussions:
+<a href="https://news.ycombinator.com/item?id=20677411" class="hn-link">Hacker News (64 points, 3 comments)</a>, <a href="https://www.reddit.com/r/MachineLearning/comments/cp8prq/p_the_illustrated_gpt2_visualizing_transformer/" class="">Reddit r/MachineLearning (219 points, 18 comments)</a>
+</span></p>
+
+<p><span class="discussion">Translations: <a href="https://lolitasian.blog.csdn.net/article/details/125529598">Simplified Chinese</a>, <a href="https://lbourdois.github.io/blog/nlp/GPT2/">French</a>, <a href="https://chloamme.github.io/2021/12/08/illustrated-gpt2-korean.html">Korean</a>, <a href="https://habr.com/ru/post/490842/">Russian</a>, <a href="https://devrimdanyal.medium.com/gpt-2-transformat%C3%B6r-dil-modellerinin-g%C3%B6rselle%C5%9Ftirilmesi-fc4bfd510223">Turkish</a></span></p>
+
+<div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/openAI-GPT-2-3.png">
+  <br>
+</div>
+
+<p>This year, we saw a dazzling application of machine learning. <a href="https://openai.com/blog/better-language-models/">The OpenAI GPT-2</a> exhibited impressive ability of writing coherent and passionate essays that exceed what we anticipated current language models are able to produce. The GPT-2 wasn’t a particularly novel architecture – it’s architecture is very similar to the decoder-only transformer. The GPT2 was, however, a very large, transformer-based language model trained on a massive dataset. In this post, we’ll look at the architecture that enabled the model to produce its results. We will go into the depths of its self-attention layer. And then we’ll look at applications for the decoder-only transformer beyond language modeling.</p>
+
+<p>My goal here is to also supplement my earlier post, <a href="https://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a>, with more visuals explaining the inner-workings of transformers, and how they’ve evolved since the original paper. My hope is that this visual language will hopefully make it easier to explain later Transformer-based models as their inner-workings continue to evolve.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/illustrated-gpt2/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/visual-numpy/">A Visual Intro to NumPy and Data Representation</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Discussions:
+<a href="https://news.ycombinator.com/item?id=20282985" class="hn-link">Hacker News (366 points, 21 comments)</a>, <a href="https://www.reddit.com/r/MachineLearning/comments/c5nc89/p_a_visual_intro_to_numpy_and_data_representation/" class="">Reddit r/MachineLearning (256 points, 18 comments)</a>
+</span>
+<br>
+<span class="discussion">Translations: <a href="http://www.junphy.com/wordpress/index.php/2019/10/24/visual-numpy/">Chinese 1</a>, <a href="https://github.com/kevingo/blog/blob/master/ML/visual-numpy.md">Chinese 2</a>, <a href="https://note.mu/sayajewels/n/n95edaedb0fc5">Japanese</a>, <a href="https://chloamme.github.io/2021/12/20/visual-numpy-korean.html">Korean</a></span></p>
+
+<div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/numpy-array.png">
+  <br>
+</div>
+
+<p>The <a href="https://www.numpy.org/">NumPy</a> package is the workhorse of data analysis, machine learning, and scientific computing in the python ecosystem. It vastly simplifies manipulating and crunching vectors and matrices. Some of python’s leading package rely on NumPy as a fundamental piece of their infrastructure (examples include scikit-learn, SciPy, pandas, and tensorflow). Beyond the ability to slice and dice numeric data, mastering numpy will give you an edge when dealing and debugging with advanced usecases in these libraries.</p>
+
+<p>In this post, we’ll look at some of the main ways to use NumPy and how it can represent different types of data (tables, images, text…etc) before we can serve them to machine learning models.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/visual-numpy/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/skipgram-recommender-talk/">Video: Intuition &amp; Use-Cases of Embeddings in NLP &amp; beyond</a></h1>
+
+      <div class="entry">
+        <div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/jay-1.jpg">
+  <br>
+</div>
+
+<p>I gave a talk at <a href="https://qconlondon.com/">Qcon London</a> this year. Watch it here:</p>
+
+<p><a href="https://www.youtube.com/watch?v=4-QoMdSqG_I">Intuition &amp; Use-Cases of Embeddings in NLP &amp; beyond</a> [YouTube]</p>
+
+<p><a href="https://www.infoq.com/presentations/nlp-word-embedding/">https://www.infoq.com/presentations/nlp-word-embedding/</a> [infoQ]</p>
+
+<p>In this video, I introduced word embeddings and the word2vec algorithm.  I then proceeded to discuss how the word2vec algorithm is used to create recommendation engines in companies like Airbnb and Alibaba. I close by glancing at real-world consequences of popular recommendation systems like those of YouTube and Facebook.</p>
+
+<p>My <a href="https://jalammar.github.io/illustrated-word2vec/">Illustrated Word2vec</a> post used and built on the materials I created for this talk (but didn’t include anything on the recommender application of word2vec). This was my first talk at a technical conference and I spent quite a bit of time preparing for it. In the six weeks prior to the conference I spent about 100 hours working on the presentation and ended up with 200 slides. It was an interesting balancing act of trying to make it introductory but not shallow, suitable for senior engineers and architects yet not necessarily ones who have machine learning experience.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/skipgram-recommender-talk/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/illustrated-word2vec/">The Illustrated Word2vec</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion"> Discussions:
+<a href="https://news.ycombinator.com/item?id=19498356" class="hn-link">Hacker News (347 points, 37 comments)</a>, <a href="https://www.reddit.com/r/MachineLearning/comments/b60jtg/p_the_illustrated_word2vec/" class="">Reddit r/MachineLearning (151 points, 19 comments)</a>
+</span>
+<br>
+<span class="discussion">
+Translations: <a href="https://mp.weixin.qq.com/s?__biz=MjM5MTQzNzU2NA==&amp;mid=2651669277&amp;idx=2&amp;sn=bc8f0590f9e340c1f1359982726c5a30&amp;chksm=bd4c648e8a3bed9817f30c5a512e79fe0cc6fbc58544f97c857c30b120e76508fef37cae49bc&amp;scene=0&amp;xtrack=1#rd">Chinese (Simplified)</a>, <a href="https://lbourdois.github.io/blog/nlp/word_embedding/">French</a>, <a href="https://databreak.netlify.com/2019-04-25-illustrated_word2vec/">Korean</a>, <a href="https://pessoalex.wordpress.com/2019/03/29/o-word2vec-ilustrado/">Portuguese</a>, <a href="https://habr.com/ru/post/446530/">Russian</a>
+</span></p>
+
+<div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/word2vec.png">
+  <br>
+</div>
+
+<blockquote class="subtle">
+  “<strong>There is in all things a pattern that is part of our universe. It has symmetry, elegance, and grace</strong> - those qualities you find always in that which the true artist captures. You can find it in the turning of the seasons, in the way sand trails along a ridge, in the branch clusters of the creosote
+  bush or the pattern of its leaves. <br><br>
+
+  We try to copy these patterns in our lives and our society,
+  seeking the rhythms, the dances, the forms that comfort.
+  Yet, it is possible to see peril in the finding of
+  ultimate perfection. It is clear that the ultimate
+  pattern contains it own fixity. In such
+  perfection, all things move toward death.”
+  ~ Dune (1965)
+</blockquote>
+
+<p>I find the concept of embeddings to be one of the most fascinating ideas in machine learning. If you’ve ever used Siri, Google Assistant, Alexa, Google Translate, or even smartphone keyboard with next-word prediction, then chances are you’ve benefitted from this idea that has become central to Natural Language Processing models. There has been quite a development over the last couple of decades in using embeddings for neural models (Recent developments include contextualized word embeddings leading to cutting-edge models like <a href="https://jalammar.github.io/illustrated-bert/">BERT</a> and GPT2).</p>
+
+<iframe width="560" height="315" src="./Mohammed Kashif – Learn concepts from first principles._files/ISPId9Lhc1g.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="
+width: 100%;
+max-width: 560px;" allowfullscreen=""></iframe>
+
+<p>Word2vec is a method to efficiently create word embeddings and has been around since 2013. But in addition to its utility as a word-embedding method, some of its concepts have been shown to be effective in creating recommendation engines and making sense of sequential data even in commercial, non-language tasks. Companies like <a href="https://www.kdd.org/kdd2018/accepted-papers/view/real-time-personalization-using-embeddings-for-search-ranking-at-airbnb">Airbnb</a>, <a href="https://www.kdd.org/kdd2018/accepted-papers/view/billion-scale-commodity-embedding-for-e-commerce-recommendation-in-alibaba">Alibaba</a>, <a href="https://www.slideshare.net/AndySloane/machine-learning-spotify-madison-big-data-meetup">Spotify</a>, and <a href="https://towardsdatascience.com/using-word2vec-for-music-recommendations-bb9649ac2484">Anghami</a> have all benefitted from carving out this brilliant piece of machinery from the world of NLP and using it in production to empower a new breed of recommendation engines.</p>
+
+<p>In this post, we’ll go over the concept of embedding, and the mechanics of generating embeddings with word2vec. But let’s start with an example to get familiar with using vectors to represent things. Did you know that a list of five numbers (a vector) can represent so much about your personality?</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/illustrated-word2vec/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/illustrated-bert/">The Illustrated BERT, ELMo, and co. (How NLP Cracked Transfer Learning)</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Discussions:
+<a href="https://news.ycombinator.com/item?id=18751469" class="hn-link">Hacker News (98 points, 19 comments)</a>, <a href="https://www.reddit.com/r/MachineLearning/comments/a3ykzf/r_the_illustrated_bert_and_elmo_how_nlp_cracked/" class="">Reddit r/MachineLearning (164 points, 20 comments)</a>
+</span>
+<br>
+<span class="discussion">Translations: <a href="https://blog.csdn.net/qq_41664845/article/details/84787969">Chinese (Simplified)</a>, <a href="https://a-coles.github.io/2020/11/15/bert-illustre.html">French 1</a>, <a href="https://lbourdois.github.io/blog/nlp/BERT/">French 2</a>, <a href="https://tech-magazine.opt.ne.jp/entry/2020/05/01/132654">Japanese</a>, <a href="https://nlpinkorean.github.io/illustrated-bert/">Korean</a>, <a href="http://blog.class.vision/1397/09/bert-in-nlp/">Persian</a>, <a href="https://habr.com/ru/post/487358/">Russian</a>, <a href="https://www.ibidem-translations.com/edu/traduccion-bert-elmo-pnl/">Spanish</a></span></p>
+
+<p><strong>2021 Update:</strong> I created this brief and highly accessible video intro to BERT</p>
+
+<div style="text-align:center">
+<iframe width="560" height="315" src="./Mohammed Kashif – Learn concepts from first principles._files/ioGry-89gqE.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="
+width: 100%;
+max-width: 560px;" allowfullscreen=""></iframe>
+</div>
+
+<p>The year 2018 has been an inflection point for machine learning models handling text (or more accurately, Natural Language Processing or NLP for short). Our conceptual understanding of how best to represent words and sentences in a way that best captures underlying meanings and relationships is rapidly evolving. Moreover, the NLP community has been putting forward incredibly powerful components that you can freely download and use in your own models and pipelines <span class="faded_text">(It’s been referred to as <a href="http://ruder.io/nlp-imagenet/">NLP’s ImageNet moment</a>, referencing how years ago similar developments accelerated the development of machine learning in Computer Vision tasks)</span>.</p>
+
+<div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/transformer-ber-ulmfit-elmo.png">
+
+</div>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/illustrated-bert/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/gentle-visual-intro-to-data-analysis-python-pandas/">A Gentle Visual Intro to Data Analysis in Python Using Pandas</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Discussions:
+<a href="https://news.ycombinator.com/item?id=18351685" class="hn-link">Hacker News (195 points, 51 comments)</a>, <a href="https://www.reddit.com/r/Python/comments/9scznd/a_gentle_visual_intro_to_data_analysis_in_python/" class="">Reddit r/Python (140 points, 18 comments)</a>
+</span></p>
+
+<p>If you’re planning to learn data analysis, machine learning, or data science tools in python, you’re most likely going to be using the wonderful <a href="https://pandas.pydata.org/">pandas</a> library. Pandas is an open source library for data manipulation and analysis in python.</p>
+
+<h2 id="loading-data">Loading Data</h2>
+<p>One of the easiest ways to think about that, is that you can load tables (and excel files) and then slice and dice them in multiple ways:</p>
+
+<p><img src="./Mohammed Kashif – Learn concepts from first principles._files/0 excel-to-pandas.png"></p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/gentle-visual-intro-to-data-analysis-python-pandas/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/illustrated-transformer/">The Illustrated Transformer</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Discussions:
+<a href="https://news.ycombinator.com/item?id=18351674" class="hn-link">Hacker News (65 points, 4 comments)</a>, <a href="https://www.reddit.com/r/MachineLearning/comments/8uh2yz/p_the_illustrated_transformer_a_visual_look_at/" class="">Reddit r/MachineLearning (29 points, 3 comments)</a>
+</span>
+<br>
+<span class="discussion">Translations: <a href="https://www.mundhor.site/post/post14">Arabic</a>, <a href="https://blog.csdn.net/yujianmin1990/article/details/85221271">Chinese (Simplified) 1</a>, <a href="https://blog.csdn.net/qq_36667170/article/details/124359818">Chinese (Simplified) 2</a>, <a href="https://a-coles.github.io/2020/11/15/transformer-illustre.html">French 1</a>, <a href="https://lbourdois.github.io/blog/nlp/Transformer/">French 2</a>, <a href="https://medium.com/@val.mannucci/il-transformer-illustrato-it-37a78e3e2348">Italian</a>, <a href="https://tips-memo.com/translation-jayalmmar-transformer">Japanese</a>, <a href="https://nlpinkorean.github.io/illustrated-transformer/">Korean</a>, <a href="http://dml.qom.ac.ir/2022/05/17/illustrated-transformer/">Persian</a>, <a href="https://habr.com/ru/post/486358/">Russian</a>, <a href="https://www.ibidemgroup.com/edu/transformer-ilustrado-jay-alammar/">Spanish 1</a>, <a href="https://hackernoon.com/el-transformador-ilustrado-una-traduccion-al-espanol-0y73wwp">Spanish 2</a>, <a href="https://trituenhantao.io/tin-tuc/minh-hoa-transformer/">Vietnamese</a></span>
+<br>
+<span class="discussion">Watch: MIT’s <a href="https://youtu.be/53YvP6gdD7U?t=432">Deep Learning State of the Art</a> lecture referencing this post</span>
+<br>
+<span class="discussion">Featured in courses at <a href="https://web.stanford.edu/class/cs224n/">Stanford</a>, <a href="https://scholar.harvard.edu/binxuw/classes/machine-learning-scratch/materials/transformers">Harvard</a>, <a href="https://ocw.mit.edu/courses/6-s897-machine-learning-for-healthcare-spring-2019/d39a6eed387ee90b1f72a01949c35c7b_MIT6_S897S19_lec8.pdf">MIT</a>, <a href="https://www.cs.princeton.edu/courses/archive/fall22/cos597G/">Princeton</a>, <a href="https://www.cs.cmu.edu/~leili/course/mldl22w/14-Transformer.pdf">CMU</a> and others</span></p>
+
+<table>
+ <tbody><tr>
+  <td style="vertical-align: middle; min-width:250px">
+<a href="https://www.llm-book.com/"><img src="./Mohammed Kashif – Learn concepts from first principles._files/a471dfff-00cc-4cb4-8df5-123e195bcc71" width="200"></a>
+  </td>
+  <td style="vertical-align: middle"><b>Update:</b> This post has now become a book! Check out <a href="https://llm-book.com/">LLM-book.com</a> which contains (Chapter 3) an updated and expanded version of this post speaking about the latest Transformer models and how they've evolved in the seven years since the original Transformer (like Multi-Query Attention and RoPE Positional embeddings).
+  </td>
+ </tr>
+</tbody></table>
+
+<p>In the <a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">previous post, we looked at Attention</a> – a ubiquitous method in modern deep learning models. Attention is a concept that helped improve the performance of neural machine translation applications. In this post, we will look at <strong>The Transformer</strong> – a model that uses attention to boost the speed with which these models can be trained. The Transformer outperforms the Google Neural Machine Translation model in specific tasks. The biggest benefit, however, comes from how The Transformer lends itself to parallelization. It is in fact Google Cloud’s recommendation to use The Transformer as a reference model to use their <a href="https://cloud.google.com/tpu/">Cloud TPU</a> offering. So let’s try to break the model apart and look at how it functions.</p>
+
+<p>The Transformer was proposed in the paper <a href="https://arxiv.org/abs/1706.03762">Attention is All You Need</a>. A TensorFlow implementation of it is available as a part of the <a href="https://github.com/tensorflow/tensor2tensor">Tensor2Tensor</a> package. Harvard’s NLP group created a <a href="http://nlp.seas.harvard.edu/2018/04/03/attention.html">guide annotating the paper with PyTorch implementation</a>. In this post, we will attempt to oversimplify things a bit and introduce the concepts one by one to hopefully make it easier to understand to people without in-depth knowledge of the subject matter.</p>
+
+<p><strong>2025 Update</strong>: We’ve built a <a href="https://bit.ly/4aRnn7Z">free short course</a> that brings the contents of this post up-to-date with animations:</p>
+
+<div style="text-align:center">
+<iframe width="560" height="315" src="./Mohammed Kashif – Learn concepts from first principles._files/k1ILy23t89E(1).html" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" style="
+ width: 100%;
+ max-width: 560px;" allowfullscreen=""></iframe>
+</div>
+<h2 id="a-high-level-look">A High-Level Look</h2>
+<p>Let’s begin by looking at the model as a single black box. In a machine translation application, it would take a sentence in one language, and output its translation in another.</p>
+
+<div class="img-div-any-width">
+  <img src="./Mohammed Kashif – Learn concepts from first principles._files/the_transformer_3.png">
+</div>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/illustrated-transformer/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Visualizing A Neural Machine Translation Model (Mechanics of Seq2seq Models With Attention)</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Translations: <a href="https://blog.csdn.net/qq_41664845/article/details/84245520">Chinese (Simplified)</a>, <a href="https://lbourdois.github.io/blog/nlp/Seq2seq-et-attention/">French</a>, <a href="https://tips-memo.com/translation-jayalmmar-attention">Japanese</a>, <a href="https://nlpinkorean.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/">Korean</a>, <a href="http://dml.qom.ac.ir/2021/10/03/visualizing-a-neural-machine-translation-model/">Persian</a>, <a href="https://habr.com/ru/post/486158/">Russian</a>, <a href="https://medium.com/@SenemAktas/n%C3%B6ral-makine-%C3%A7eviri-modelini-g%C3%B6rselle%C5%9Ftirme-seq2seq-modelinin-attention-mekanizmas%C4%B1-b12581b5a1df">Turkish</a>, <a href="https://murodbek.substack.com/p/neyron-mashinaviy-tarjima-modellarini">Uzbek</a></span>
+<br>
+<span class="discussion">Watch: MIT’s <a href="https://youtu.be/53YvP6gdD7U?t=335">Deep Learning State of the Art</a> lecture referencing this post</span></p>
+
+<p><strong>May 25th update:</strong> New graphics (RNN animation, word embedding graph), color coding, elaborated on the final attention example.</p>
+
+<p><strong>Note:</strong> The animations below are videos. Touch or hover on them (if you’re using a mouse) to get play controls so you can pause if needed.</p>
+
+<p>Sequence-to-sequence models are deep learning models that have achieved a lot of success in tasks like machine translation, text summarization, and image captioning. Google Translate started <a href="https://blog.google/products/translate/found-translation-more-accurate-fluent-sentences-google-translate/">using</a> such a model in production in late 2016. These models are explained in the two pioneering papers (<a href="https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf">Sutskever et al., 2014</a>, <a href="http://emnlp2014.org/papers/pdf/EMNLP2014179.pdf">Cho et al., 2014</a>).</p>
+
+<p>I found, however, that understanding the model well enough to implement it requires unraveling a series of concepts that build on top of each other. I thought that a bunch of these ideas would be more accessible if expressed visually. That’s what I aim to do in this post. You’ll need some previous understanding of deep learning to get through this post. I hope it can be a useful companion to reading the papers mentioned above (and the attention papers linked later in the post).</p>
+
+<p>A sequence-to-sequence model is a model that takes a sequence of items (words, letters, features of an images…etc) and outputs another sequence of items. A trained model would work like this:</p>
+<video width="100%" height="auto" loop="" autoplay="" controls="">
+  <source src="/images/seq2seq_1.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/visualizing-neural-machine-translation-mechanics-of-seq2seq-models-with-attention/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/visualizing-pandas-pivoting-and-reshaping/">Visualizing Pandas' Pivoting and Reshaping Functions</a></h1>
+
+      <div class="entry">
+        <video width="100%" height="auto" loop="" autoplay="" controls="">
+  <source src="/images/pandas_reshape_and_pivot.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<p>I love using python’s <a href="https://pandas.pydata.org/">Pandas</a> package for data analysis. The <a href="https://pandas.pydata.org/pandas-docs/stable/10min.html">10 Minutes to pandas</a> is a great place to start learning how to use it for data analysis.</p>
+
+<p>Things get a lot more interesting once you’re comfortable with the fundamentals and start with <a href="https://pandas.pydata.org/pandas-docs/stable/reshaping.html">Reshaping and Pivot Tables</a>. That guide shows some of the more interesting functions of reshaping data. Below are some visualizations to go along with the Pandas reshaping guide.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/visualizing-pandas-pivoting-and-reshaping/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/feedforward-neural-networks-visual-interactive/">A Visual And Interactive Look at Basic Neural Network Math</a></h1>
+
+      <div class="entry">
+        <p>In the <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/">previous post, we looked at the basic concepts of neural networks</a>. Let us now take another example as an excuse to guide us to explore some of the basic mathematical ideas involved in prediction with neural networks.</p>
+
+<video width="100%" height="auto" loop="" autoplay="" controls="">
+  <source src="/images/titanic_nn_calculation.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/feedforward-neural-networks-visual-interactive/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/">A Visual and Interactive Guide to the Basics of Neural Networks</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Discussions:
+<a href="https://news.ycombinator.com/item?id=13183171" class="hn-link">Hacker News (63 points, 8 comments)</a>, <a href="https://www.reddit.com/r/programming/comments/5igdix/a_visual_and_interactive_guide_to_the_basics_of/" class="">Reddit r/programming (312 points, 37 comments)</a></span>
+<br>
+<span class="discussion">Translations: <a href="https://ai-ds.thakaa.sa/post/dlyl-mry-y-wtfaaly-l-ssyt-lshbkt-laasbwny">Arabic</a>, <a href="https://rr0.org/people/a/AlammarJay/visual-interactive-guide-basics-neural-networks/index_fr.html">French</a>, <a href="https://camporeale.github.io/guia-interactiva-visual-conceptos-basicos-redes-neuronales/">Spanish</a>
+</span></p>
+
+<div class="img-div">
+    <img src="./Mohammed Kashif – Learn concepts from first principles._files/NNs_2_variables.png">
+</div>
+
+<p><strong>Update</strong>: Part 2 is now live: <a href="https://jalammar.github.io/feedforward-neural-networks-visual-interactive/">A Visual And Interactive Look at Basic Neural Network Math</a></p>
+
+<h2 id="motivation">Motivation</h2>
+<p>I’m not a machine learning expert. I’m a software engineer by training and I’ve had little interaction with AI. I had always wanted to delve deeper into machine learning, but never really found my “in”. That’s why when Google open sourced TensorFlow in November 2015, I got super excited and knew it was time to jump in and start the learning journey. Not to sound dramatic, but to me, it actually felt kind of like Prometheus handing down fire to mankind from the Mount Olympus of machine learning. In the back of my head was the idea that the entire field of Big Data and technologies like Hadoop were vastly accelerated when Google researchers released their Map Reduce paper. This time it’s not a paper – it’s the actual software they use internally after years and years of evolution.</p>
+
+<p>So I started learning what I can about the basics of the topic, and saw the need for gentler resources for people with no experience in the field. This is my attempt at that.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="https://jalammar.github.io/Supercharging-android-apps-using-tensorflow/">Supercharging Android Apps With TensorFlow (Google's Open Source Machine Learning Library)</a></h1>
+
+      <div class="entry">
+        <p><span class="discussion">Discussion:
+<a href="https://www.reddit.com/r/androiddev/comments/3zpkb6/supercharging_android_apps_with_tensorflow/" class="">Reddit r/Android (80 points, 16 comments)</a>
+</span></p>
+
+<p><img src="./Mohammed Kashif – Learn concepts from first principles._files/google-tensorflow-android.jpg" alt="google-tensorflow-android.jpg"></p>
+
+<p>In November 2015, Google <a href="https://googleblog.blogspot.com/2015/11/tensorflow-smarter-machine-learning-for.html">announced</a> and open sourced <a href="https://www.tensorflow.org/">TensorFlow</a>, its latest and greatest machine learning library. This is a big deal for three reasons:</p>
+
+<ol>
+  <li>Machine Learning expertise: Google is a dominant force in machine learning. Its prominence in search owes a lot to the strides it achieved in machine learning.</li>
+  <li>Scalability: the announcement noted that TensorFlow was initially designed for internal use and that it’s already in production for some live product features.</li>
+  <li>Ability to run on Mobile.</li>
+</ol>
+
+<p>This last reason is the operating reason for this post since we’ll be focusing on Android. If you examine the <a href="https://github.com/tensorflow/tensorflow">tensorflow repo on GitHub</a>, you’ll find a little  <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android">tensorflow/examples/android</a> directory. I’ll try to shed some light on the Android TensorFlow example and some of the things going on under the hood.</p>
+
+
+      </div>
+
+      <a href="https://jalammar.github.io/Supercharging-android-apps-using-tensorflow/" class="read-more">Read More</a>
+    </article>
+  
+</div>
+    </div>
+
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+  <iframe src="./Mohammed Kashif – Learn concepts from first principles._files/embed.html" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
+    </div>
+
+<div style="padding: 10px 0 10px 3%; color: #555; font-size:85%">
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="./Mohammed Kashif – Learn concepts from first principles._files/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+
+<br>
+Attribution example:
+<br>
+<i>Alammar, J (2018). The Illustrated Transformer [Blog post]. Retrieved from <a href="https://jalammar.github.io/illustrated-transformer/">https://jalammar.github.io/illustrated-transformer/</a></i>
+
+<br><br>
+Note: If you translate any of the posts, let me know so I can link your translation to the original post. My email is in the <a href="https://jalammar.github.io/about">about page</a>.
+</div>
+
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+<a href="https://github.com/jalammar"><i class="svg-icon github"></i></a>
+
+<a href="https://www.linkedin.com/in/jalammar"><i class="svg-icon linkedin"></i></a>
+
+
+<a href="https://www.twitter.com/jayalammar"><i class="svg-icon twitter"></i></a>
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+	<!-- Google tag (gtag.js) -->
+	<script async="" src="./Mohammed Kashif – Learn concepts from first principles._files/js"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-R9S1R9LV9P');
+	</script>
+	<!-- End Google Analytics -->
+
+
+  
+
+<div id="minerva_extension_root" style="display: none;"><iframe src="./Mohammed Kashif – Learn concepts from first principles._files/saved_resource.html"></iframe></div><div id="crx-root-main"><template shadowrootmode="open"><link href="chrome-extension://iadokddofjgcgjpjlfhngclhpmaelnli/src/assets/styles.css" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd/dist/antd.min.css"><div class="css-1x0dypw ant-app"><div class="root" id="crx-root"><div></div></div></div></template></div><div class="glasp-extension-toaster" style="display: block; width: 320px; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; top: 40px; right: 24px; z-index: 9999;"><template shadowrootmode="open"><div class="glasp-extension" style="font-family: Inter;"></div></template></div><div class="glasp-extension" style="display: block; width: unset; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; bottom: 16px; right: 16px; z-index: 9999;"><template shadowrootmode="open"><div class="glasp-extension" style="font-family: Inter;"></div></template></div></body></html>
