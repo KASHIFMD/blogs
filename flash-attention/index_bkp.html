@@ -84,11 +84,65 @@
   </div>
 
 
-  <div class="container">
-    <h1>Flash Attention</h1>
 
-    <p>The flash attention is a mechanism used for optimizing inference of <b>LLMs</b> and <b>VLMs</b></p>
-  </div>  
+
+
+<!-- MathJax script for rendering LaTeX -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+<div class="container">
+  <h1>🚀 Understanding Transformers</h1>
+
+  <h2>1. <strong>Self-Attention Mechanism</strong></h2>
+  <p>
+    The core innovation of Transformers is the <strong>self-attention</strong> mechanism. It allows each token to focus on <span style="color: #007acc;">relevant context</span> dynamically.
+  </p>
+
+  <h3>Example Sentence:</h3>
+  <p><code>The cat sat on the mat because it was tired.</code></p>
+
+  <h3>Steps in Attention Calculation:</h3>
+  <ol>
+    <li>Create Query, Key, and Value vectors</li>
+    <li>Compute dot-product attention scores</li>
+    <li>Apply softmax for normalization</li>
+  </ol>
+
+  <h3>LaTeX Equation (Simple):</h3>
+  <p>
+    Attention Score: <br>
+    $$ \text{score}(Q, K) = QK^T $$
+  </p>
+
+  <h3>LaTeX Equation (Complex):</h3>
+  <p>
+    Scaled Dot-Product Attention: <br>
+    $$ \text{Attention}(Q, K, V) = \text{softmax}\left( \frac{QK^T}{\sqrt{d_k}} \right)V $$
+  </p>
+
+  <h3>Python Code Example:</h3>
+  <pre><code class="language-python">
+import torch
+q = torch.rand(1, 64)
+k = torch.rand(1, 64)
+score = torch.matmul(q, k.T)
+  </code></pre>
+
+  <h3>Terminal Output:</h3>
+  <pre style="background-color: #1e1e1e; color: #d4d4d4; padding: 1em;">
+$ python attention.py
+Dot-product score: tensor([[15.8421]])
+  </pre>
+
+  <p><strong>Note:</strong> For best performance, use <em>multi-head attention</em> with positional encoding.</p>
+</div>
+
+
+
+
 
 
 
