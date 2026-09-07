@@ -1,68 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Blogs – Mohammed Kashif – Learn AI from first principles.</title>
-    
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    
-    <meta name="description" content="Learn concepts from first principles.">
-    <meta property="og:description" content="Learn concepts from first principles.">
-    
-    <meta name="author" content="Mohammed Kashif">
+    <meta charset="UTF-8">
+    <title>Blogs – Mohammed Kashif – Learn AI from first principles</title>
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Mohammed Kashif">
+    <meta name="description" content="Notes on inference, attention, and production ML systems — from first principles.">
+    <meta property="og:title" content="Blogs – Mohammed Kashif">
+    <meta property="og:description" content="Notes on inference, attention, and production ML systems — from first principles.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://kashifmd.github.io/blogs/">
+    <meta property="og:image" content="https://kashifmd.github.io/blogs/Mohammed%20Kashif%20%E2%80%93%20Learn%20concepts%20from%20first%20principles._files/kashif.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blogs – Mohammed Kashif">
+
+    <link rel="icon" type="image/png" href="./Mohammed Kashif – Learn concepts from first principles._files/kashif.png">
 
     <script src="./Mohammed Kashif – Learn concepts from first principles._files/jquery-3.1.1.slim.min.js"></script>
-    <script type="text/javascript" src="./Mohammed Kashif – Learn concepts from first principles._files/d3.min.js"></script>
-    <script type="text/javascript" src="./Mohammed Kashif – Learn concepts from first principles._files/d3-selection-multi.v0.4.min.js"></script>
-    <script type="text/javascript" src="./Mohammed Kashif – Learn concepts from first principles._files/d3-jetpack.js"></script>
+    <script src="./Mohammed Kashif – Learn concepts from first principles._files/d3.min.js"></script>
+    <script src="./Mohammed Kashif – Learn concepts from first principles._files/d3-selection-multi.v0.4.min.js"></script>
+    <script src="./Mohammed Kashif – Learn concepts from first principles._files/d3-jetpack.js"></script>
 
     <link rel="stylesheet" href="./Mohammed Kashif – Learn concepts from first principles._files/bootstrap.min.css">
     <link rel="stylesheet" href="./Mohammed Kashif – Learn concepts from first principles._files/bootstrap-theme.min.css">
     <script src="./Mohammed Kashif – Learn concepts from first principles._files/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./Mohammed Kashif – Learn concepts from first principles._files/gifplayer.css">
-    <script type="text/javascript" src="./Mohammed Kashif – Learn concepts from first principles._files/jquery.gifplayer.js"></script>
+    <link rel="stylesheet" href="./Mohammed Kashif – Learn concepts from first principles._files/gifplayer.css">
+    <script src="./Mohammed Kashif – Learn concepts from first principles._files/jquery.gifplayer.js"></script>
 
-    <link rel="stylesheet" href="./Mohammed Kashif – Learn concepts from first principles._files/katex.min.css" integrity="sha384-wE+lCONuEo/QSfLb4AfrSk7HjWJtc4Xc1OiB2/aDBzHzjnlBP4SX7vjErTcwlA8C" crossorigin="anonymous">
-    <script src="./Mohammed Kashif – Learn concepts from first principles._files/katex.min.js" integrity="sha384-tdtuPw3yx/rnUGmnLNWXtfjb9fpmwexsd+lr6HUYnUY4B7JhB5Ty7a1mYd+kto/s" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./Mohammed Kashif – Learn concepts from first principles._files/katex.min.css">
+    <script src="./Mohammed Kashif – Learn concepts from first principles._files/katex.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./Mohammed Kashif – Learn concepts from first principles._files/style.css">
-    <!-- <link rel="alternate" type="application/rss+xml" title="Jay Alammar - Visualizing machine learning one concept at a time." href="https://jalammar.github.io/feed.xml"> -->
-
-    <!-- Link to our custom styles -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
-
-    <meta name="viewport" content="width=device-width">
-    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+    <link rel="stylesheet" href="./Mohammed Kashif – Learn concepts from first principles._files/style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
   <body>
     <div class="wrapper-masthead">
         <div class="container">
             <header class="masthead clearfix">
-                <a href="https://kashifmd.github.io/blogs" class="site-avatar">
-                    <img src="./Mohammed Kashif – Learn concepts from first principles._files/kashif.png">
+                <a href="https://kashifmd.github.io/blogs/" class="site-avatar">
+                    <img src="./Mohammed Kashif – Learn concepts from first principles._files/kashif.png" alt="Mohammed Kashif">
                 </a>
 
                 <div class="site-info">
                     <h1 class="site-name">
-                        <a href="https://kashifmd.github.io/blogs">Mohammed Kashif</a>
+                        <a href="https://kashifmd.github.io/blogs/">Mohammed Kashif</a>
                     </h1>
                     <p class="site-description">
                         Learn AI from first principles.<br>
-                        <!-- Read our book, <a href="https://www.llm-book.com/">Hands-On Large Language Models</a> and -->
                         Follow me on
                         <a href="https://www.linkedin.com/in/kashifmd2023iit/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <!-- <a href="https://www.linkedin.com/in/kashifmd2023iit/">LinkedIn</a>  -->
-                        <!-- <a href="https://bsky.app/profile/jayalammar.bsky.social">Bluesky</a>, 
-                        <a href="https://newsletter.languagemodels.co/">Substack</a>, 
-                        <a href="https://x.com/JayAlammar">X</a>,
-                        <a href="https://www.youtube.com/channel/UCmOwsoHty5PrmE-3QhUBfPQ">YouTube</a> -->
                     </p>
                 </div>
 
@@ -73,178 +64,48 @@
         </div>
     </div>
 
-    <div id="main" role="main" class="container">
+    <main id="main" role="main" class="container">
       <div class="posts">
-  
+
         <article class="post">
           <h1>
             <a href="https://kashifmd.github.io/blogs/flash-attention/">
               Flash Attention
             </a>
           </h1>
-        
+
+          <div class="date">June 2025</div>
+
           <div class="entry">
-
             <p>
-              <a href="javascript:void(0);" onclick="toggleTranslations()">->What is Flash Attention?</a>
+              Standard attention is slow because it writes an <em>N</em>×<em>N</em> score matrix to GPU HBM.
+              FlashAttention never materializes that matrix: it tiles Q, K, and V into SRAM,
+              uses online softmax, and still produces the exact same output — which is why long-context
+              training and inference became practical.
             </p>
-
-            <p id="translation-links" style="display: none;">
-              <span class="discussion">
-                FlashAttention is an efficient algorithm designed to speed up the attention mechanism in large language models by reducing memory usage and increasing GPU throughput. Unlike standard attention, which loads entire matrices into memory, FlashAttention computes attention in small chunks directly in GPU SRAM, avoiding memory bottlenecks. This enables faster training and inference, especially for long sequences, and is now widely adopted in models like GPT and LLaMA for improved performance on modern hardware.
-              </span>
-            </p>
-            <script>
-              function toggleTranslations() {
-                const links = document.getElementById("translation-links");
-                links.style.display = links.style.display === "none" ? "block" : "none";
-              }
-            </script>
-            
-            <p>
-              <strong>Summary</strong>: ABCD
-            </p>
-            <div class="img-div-any-width">
-              <img src="./Mohammed Kashif – Learn concepts from first principles._files/bert-distilbert-sentence-classification.png" alt="BERT sentence classification illustration">
-              <br>
-            </div>
-        
-            <p>
-              PQRS
-            </p>
-        
           </div>
-        
+
           <a href="https://kashifmd.github.io/blogs/flash-attention/" class="read-more">Read More</a>
         </article>
 
+      </div>
+    </main>
 
-    <!-- <div id="main" role="main" class="container">
-      <div class="posts">
-  
-        <article class="post">
-          <h1>
-            <a href="https://jalammar.github.io/a-visual-guide-to-using-bert-for-the-first-time/">
-              A Visual Guide to Using BERT for the First Time
-            </a>
-          </h1>
-        
-          <div class="entry">
-
-            <p>
-              <a href="javascript:void(0);" onclick="toggleTranslations()">->What is BERT?</a>
-            </p>
-
-            <p id="translation-links" style="display: none;">
-              <span class="discussion">
-                Definition: BERT is abbreviation for Bidirectional Encoder Only Transformer
-              </span>
-            </p>
-            <script>
-              function toggleTranslations() {
-                const links = document.getElementById("translation-links");
-                links.style.display = links.style.display === "none" ? "block" : "none";
-              }
-            </script>
-            
-            <p>
-              <strong>Summary</strong>: Progress has been rapidly accelerating in machine learning models that process language over the last couple of years. This progress has left the research lab and started powering some of the leading digital products. A great example of this is the
-              <a href="https://www.blog.google/products/search/search-language-understanding-bert/">
-                recent announcement of how the BERT model is now a major force behind Google Search
-              </a>.
-              Google believes this step (or progress in natural language understanding as applied in search) represents “the biggest leap forward in the past five years, and one of the biggest leaps forward in the history of Search”.
-            </p>
-            <div class="img-div-any-width">
-              <img src="./Mohammed Kashif – Learn concepts from first principles._files/bert-distilbert-sentence-classification.png" alt="BERT sentence classification illustration">
-              <br>
-            </div>
-        
-            <p>
-              This post is a simple tutorial for how to use a variant of BERT to classify sentences. This is an example that is basic enough as a first intro, yet advanced enough to showcase some of the key concepts involved.
-            </p>
-        
-            <p>
-              Alongside this post, I’ve prepared a notebook. You can view it
-              <a href="https://github.com/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb">here on GitHub</a>
-              or
-              <a href="https://colab.research.google.com/github/jalammar/jalammar.github.io/blob/master/notebooks/bert/A_Visual_Notebook_to_Using_BERT_for_the_First_Time.ipynb">run it on Colab</a>.
-            </p>
-          </div>
-        
-          <a href="https://jalammar.github.io/a-visual-guide-to-using-bert-for-the-first-time/" class="read-more">Read More</a>
-        </article> -->
-        
+    <div class="wrapper-footer">
+      <div class="container">
+          <footer class="footer">
+              <a href="https://github.com/kashifmd" aria-label="GitHub"><i class="svg-icon github"></i></a>
+              <a href="https://www.linkedin.com/in/kashifmd2023iit" aria-label="LinkedIn"><i class="svg-icon linkedin"></i></a>
+          </footer>
       </div>
     </div>
 
-
-<!-- 
-    <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-  <iframe src="./Mohammed Kashif – Learn concepts from first principles._files/embed.html" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-    </div> -->
-
-<!-- <div style="padding: 10px 0 10px 3%; color: #555; font-size:85%">
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="./Mohammed Kashif – Learn concepts from first principles._files/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
-
-<br>
-Attribution example:
-<br>
-<i>Alammar, J (2018). The Illustrated Transformer [Blog post]. Retrieved from <a href="https://jalammar.github.io/illustrated-transformer/">https://jalammar.github.io/illustrated-transformer/</a></i>
-
-<br><br>
-Note: If you translate any of the posts, let me know so I can link your translation to the original post. My email is in the <a href="https://jalammar.github.io/about">about page</a>.
-</div> -->
-
-
-<div class="wrapper-footer">
-  <div class="container">
-      <footer class="footer">
-          <a href="https://github.com/kashifmd"><i class="svg-icon github"></i></a>
-          <a href="https://www.linkedin.com/in/kashifmd2023iit"><i class="svg-icon linkedin"></i></a>
-          <!-- <a href="https://www.twitter.com/jayalammar"><i class="svg-icon twitter"></i></a> -->
-      </footer>
-  </div>
-</div>
-
-    
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-65X4NEWSNB"></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-65X4NEWSNB');
-  </script>
-	<!-- End Google Analytics -->
-
-
-  
-
-    <div id="minerva_extension_root" style="display: none;">
-      <iframe src="./Mohammed Kashif – Learn concepts from first principles._files/saved_resource.html"></iframe>
-    </div>
-
-    <div id="crx-root-main">
-      <template shadowrootmode="open"><link href="chrome-extension://iadokddofjgcgjpjlfhngclhpmaelnli/src/assets/styles.css" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd/dist/antd.min.css">
-        <div class="css-1x0dypw ant-app">
-          <div class="root" id="crx-root">
-            <div></div>
-          </div>
-        </div>
-      </template>
-    </div>
-    <div class="glasp-extension-toaster" style="display: block; width: 320px; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; top: 40px; right: 24px; z-index: 9999;">
-      <template shadowrootmode="open">
-        <div class="glasp-extension" style="font-family: Inter;">
-        </div>
-      </template>
-    </div>
-    <div class="glasp-extension" style="display: block; width: unset; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; bottom: 16px; right: 16px; z-index: 9999;">
-      <template shadowrootmode="open">
-        <div class="glasp-extension" style="font-family: Inter;">
-        </div>
-      </template>
-    </div>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-65X4NEWSNB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-65X4NEWSNB');
+    </script>
   </body>
 </html>

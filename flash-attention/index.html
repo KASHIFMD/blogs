@@ -1,137 +1,198 @@
 <!DOCTYPE html>
-<!-- saved from url=(0051)https://jalammar.github.io/illustrated-transformer/ -->
-<html>
+<html lang="en">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Flash Attention – Mohammed Kashif – Learn AI from first principles.</title>
-    
+    <meta charset="UTF-8">
+    <title>Flash Attention – Mohammed Kashif – Learn AI from first principles</title>
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="author" content="Mohammed Kashif">
-
-    
+    <meta name="description" content="Flash Attention from first principles: why standard attention is memory-bound, and how tiling plus online softmax avoid the N×N matrix.">
     <meta property="og:title" content="Flash Attention">
-    <meta property="twitter:title" content="Flash Attention">
-    
+    <meta property="og:description" content="Why standard attention is memory-bound, and how tiling plus online softmax avoid the N×N matrix.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://kashifmd.github.io/blogs/flash-attention/">
+    <meta property="og:image" content="https://kashifmd.github.io/blogs/flash-attention/Flash%20Attention%20%E2%80%93%20Mohammed%20Kashif%20%E2%80%93%20Learn%20from%20first%20principles._files/kashif.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Flash Attention">
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="icon" type="image/png" href="./Flash Attention – Mohammed Kashif – Learn from first principles._files/kashif.png">
 
     <script src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/jquery-3.1.1.slim.min.js"></script>
-    <script type="text/javascript" src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/d3.min.js"></script>
-    <script type="text/javascript" src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/d3-selection-multi.v0.4.min.js"></script>
-    <script type="text/javascript" src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/d3-jetpack.js"></script>
+    <script src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/d3.min.js"></script>
+    <script src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/d3-selection-multi.v0.4.min.js"></script>
+    <script src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/d3-jetpack.js"></script>
 
     <link rel="stylesheet" href="./Flash Attention – Mohammed Kashif – Learn from first principles._files/bootstrap.min.css">
     <link rel="stylesheet" href="./Flash Attention – Mohammed Kashif – Learn from first principles._files/bootstrap-theme.min.css">
-    <script src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/bootstrap.min.js"> </script>
+    <script src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./Flash Attention – Mohammed Kashif – Learn from first principles._files/gifplayer.css">
-    <script type="text/javascript" src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/jquery.gifplayer.js"></script>
+    <link rel="stylesheet" href="./Flash Attention – Mohammed Kashif – Learn from first principles._files/gifplayer.css">
+    <script src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/jquery.gifplayer.js"></script>
 
-    <!--
-    <script data-main="scripts/main" src="scripts/require.js"></script>
-    -->
-    <link rel="stylesheet" href="./Flash Attention – Mohammed Kashif – Learn from first principles._files/katex.min.css" integrity="sha384-wE+lCONuEo/QSfLb4AfrSk7HjWJtc4Xc1OiB2/aDBzHzjnlBP4SX7vjErTcwlA8C" crossorigin="anonymous">
-    <script src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/katex.min.js" integrity="sha384-tdtuPw3yx/rnUGmnLNWXtfjb9fpmwexsd+lr6HUYnUY4B7JhB5Ty7a1mYd+kto/s" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./Flash Attention – Mohammed Kashif – Learn from first principles._files/katex.min.css">
+    <script src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/katex.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./Flash Attention – Mohammed Kashif – Learn from first principles._files/style.css">
-    <!-- <link rel="alternate" type="application/rss+xml" title="Jay Alammar - Visualizing machine learning one concept at a time." href="https://jalammar.github.io/feed.xml"> -->
-
-
-    <!-- Link to our custom styles -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
-
-    <meta name="viewport" content="width=device-width">
-    
+    <link rel="stylesheet" href="./Flash Attention – Mohammed Kashif – Learn from first principles._files/style.css">
+    <link rel="stylesheet" href="styles.css">
   </head>
-
-
 
   <body>
     <div class="wrapper-masthead">
       <div class="container">
           <header class="masthead clearfix">
-              <a href="https://kashifmd.github.io/blogs" class="site-avatar">
-                  <img src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/kashif.png">
+              <a href="https://kashifmd.github.io/blogs/" class="site-avatar">
+                  <img src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/kashif.png" alt="Mohammed Kashif">
               </a>
 
               <div class="site-info">
                   <h1 class="site-name">
-                      <a href="https://kashifmd.github.io/blogs">Mohammed Kashif</a>
+                      <a href="https://kashifmd.github.io/blogs/">Mohammed Kashif</a>
                   </h1>
                   <p class="site-description">
                       Learn AI from first principles.<br>
-                      <!-- Read our book, <a href="https://www.llm-book.com/">Hands-On Large Language Models</a> and -->
                       Follow me on
                       <a href="https://www.linkedin.com/in/kashifmd2023iit/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                      <!-- <a href="https://www.linkedin.com/in/kashifmd2023iit/">LinkedIn</a>  -->
-                      <!-- <a href="https://bsky.app/profile/jayalammar.bsky.social">Bluesky</a>, 
-                      <a href="https://newsletter.languagemodels.co/">Substack</a>, 
-                      <a href="https://x.com/JayAlammar">X</a>,
-                      <a href="https://www.youtube.com/channel/UCmOwsoHty5PrmE-3QhUBfPQ">YouTube</a> -->
                   </p>
               </div>
 
               <nav>
-                  <a href="https://kashifmd.github.io/blogs">Blogs</a>
+                  <a href="https://kashifmd.github.io/blogs/">Blogs</a>
                   <a href="https://kashifmd.github.io/">About</a>
               </nav>
           </header>
       </div>
-  </div>
+    </div>
 
+    <main id="main" role="main" class="container">
+      <article class="page">
+        <h1>Flash Attention</h1>
+        <div class="date">June 2025</div>
 
-  <div class="container">
-    <h1>Flash Attention</h1>
+        <div class="entry">
+          <p>
+            FlashAttention is a way to compute the same attention as a Transformer textbook,
+            without ever writing the giant <em>N</em>×<em>N</em> score matrix to GPU memory.
+            That one change is why long-context LLMs and VLMs became practical.
+          </p>
 
-    <p>The flash attention is a mechanism used for optimizing inference of <b>LLMs</b> and <b>VLMs</b>. LLMs</p>
-  </div>  
+          <h2>What attention actually computes</h2>
+          <p>
+            For a sequence of length <em>N</em> and head dimension <em>d</em>, each head has
+            queries, keys, and values <em>Q, K, V</em> of shape <em>N</em>×<em>d</em>:
+          </p>
+          <p>
+            <em>S</em> = <em>QK<sup>T</sup></em> &nbsp;&nbsp;→&nbsp;&nbsp;
+            <em>P</em> = softmax(<em>S</em>) &nbsp;&nbsp;→&nbsp;&nbsp;
+            <em>O</em> = <em>PV</em>
+          </p>
+          <p>
+            The math is simple. The problem is <em>S</em> and <em>P</em>: both are <em>N</em>×<em>N</em>.
+            At <em>N</em> = 8,192 that is about 64 million numbers <em>per head</em>.
+            At <em>N</em> = 32,768 it is a billion. Training and serving spend most of their time
+            shipping that matrix to and from memory, not multiplying numbers.
+          </p>
 
+          <h2>The bottleneck is HBM, not FLOPs</h2>
+          <p>
+            A GPU has a small, fast on-chip SRAM and a large, slow HBM (the “GPU memory” you see in
+            <code>nvidia-smi</code>). On an A100, SRAM is on the order of tens of megabytes;
+            HBM is tens of gigabytes, but much higher latency.
+          </p>
+          <p>
+            Standard attention:
+          </p>
+          <ol>
+            <li>Reads <em>Q</em> and <em>K</em> from HBM, writes the full <em>S</em> back to HBM.</li>
+            <li>Reads <em>S</em>, writes <em>P</em> to HBM.</li>
+            <li>Reads <em>P</em> and <em>V</em>, writes <em>O</em>.</li>
+          </ol>
+          <p>
+            Those round trips dominate. Attention is <strong>memory-bound</strong>: the Tensor Cores
+            sit idle waiting for HBM. You cannot “just add more FLOPs” to fix it.
+          </p>
 
+          <h2>Keep the <em>N</em>×<em>N</em> matrix in SRAM</h2>
+          <p>
+            SRAM cannot hold a full 8k×8k matrix. It <em>can</em> hold small tiles.
+            FlashAttention cuts <em>Q</em>, <em>K</em>, and <em>V</em> into blocks that fit on-chip:
+          </p>
+          <ul>
+            <li>Load one block of <em>Q</em> into SRAM.</li>
+            <li>Loop over blocks of <em>K</em> and <em>V</em>.</li>
+            <li>For each pair of blocks, compute a slice of scores, softmax, and a partial output
+                <em>entirely in SRAM</em>.</li>
+            <li>Write only the final output block <em>O</em> back to HBM.</li>
+          </ul>
+          <p>
+            The full score matrix still exists mathematically. It never exists as a tensor in HBM.
+            Memory for attention drops from <em>O(N<sup>2</sup>)</em> to <em>O(N)</em>.
+          </p>
 
-<!-- 
-    <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
-  <iframe src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/embed.html" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>
-    </div> -->
+          <h2>Online softmax: why tiling is not trivial</h2>
+          <p>
+            Softmax is a global operation: each row is <code>exp(s<sub>i</sub>) / Σ exp(s<sub>j</sub>)</code>.
+            If you only see one tile of a row, you do not know the sum — or the maximum, which you
+            need for numerical stability.
+          </p>
+          <p>
+            The fix is <strong>online softmax</strong>. For each query row you keep two running
+            statistics while you stream key tiles:
+          </p>
+          <ul>
+            <li>the running maximum of the scores, and</li>
+            <li>the running sum of <code>exp(score − max)</code>.</li>
+          </ul>
+          <p>
+            When a new tile arrives, you rescale the partial output you already have
+            (because the max and the denominator changed), then add the new tile’s contribution.
+            After the last key tile, the output is <em>exactly</em> the same as full softmax —
+            not an approximation.
+          </p>
 
-<!--     
-<div style="padding: 10px 0 10px 3%; color: #555; font-size:85%">
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/88x31.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+          <h2>What you get in practice</h2>
+          <ul>
+            <li><strong>Faster:</strong> fewer HBM round trips, often 2–4× on long sequences.</li>
+            <li><strong>Leaner:</strong> you can raise context length without the attention matrix
+                blowing GPU memory.</li>
+            <li><strong>Exact:</strong> same numerics as standard attention, so checkpoints and
+                downstream metrics stay comparable.</li>
+          </ul>
+          <p>
+            FlashAttention-2 improves how work is split across warps (less non-matmul overhead).
+            FlashAttention-3 targets newer NVIDIA hardware (Hopper) with asynchrony and lower-precision
+            Tensor Cores. The idea is unchanged: <em>do attention where the data already is</em>.
+          </p>
+          <p>
+            That is also why it shows up in inference stacks (TensorRT-LLM, vLLM, Triton) and not
+            only in training papers. Long prompts and KV-cache-heavy decoding hit the same HBM wall.
+          </p>
 
-<br>
-Attribution example:
-<br>
-<i>Alammar, J (2018). The Illustrated Transformer [Blog post]. Retrieved from <a href="https://jalammar.github.io/illustrated-transformer/">https://jalammar.github.io/illustrated-transformer/</a></i>
+          <h2>Further reading</h2>
+          <ul>
+            <li>Dao et al., <em>FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness</em>, NeurIPS 2022.</li>
+            <li>Dao, <em>FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning</em>, 2023.</li>
+          </ul>
+        </div>
+      </article>
+    </main>
 
-<br><br>
-Note: If you translate any of the posts, let me know so I can link your translation to the original post. My email is in the <a href="https://jalammar.github.io/about">about page</a>.
-</div> -->
+    <div class="wrapper-footer">
+      <div class="container">
+          <footer class="footer">
+              <a href="https://github.com/kashifmd" aria-label="GitHub"><i class="svg-icon github"></i></a>
+              <a href="https://www.linkedin.com/in/kashifmd2023iit" aria-label="LinkedIn"><i class="svg-icon linkedin"></i></a>
+          </footer>
+      </div>
+    </div>
 
-<div class="wrapper-footer">
-  <div class="container">
-      <footer class="footer">
-          <a href="https://github.com/kashifmd"><i class="svg-icon github"></i></a>
-          <a href="https://www.linkedin.com/in/kashifmd2023iit"><i class="svg-icon linkedin"></i></a>
-          <!-- <a href="https://www.twitter.com/jayalammar"><i class="svg-icon twitter"></i></a> -->
-      </footer>
-  </div>
-</div>
-    
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-65X4NEWSNB"></script>
-  <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-65X4NEWSNB');
-  </script>
-	<!-- End Google Analytics -->
-
-
-  
-
-<div id="minerva_extension_root" style="display: none;"><iframe src="./Flash Attention – Mohammed Kashif – Learn from first principles._files/saved_resource.html"></iframe></div><div id="crx-root-main"><template shadowrootmode="open"><link href="chrome-extension://iadokddofjgcgjpjlfhngclhpmaelnli/src/assets/styles.css" rel="stylesheet"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd/dist/antd.min.css"><div class="css-1x0dypw ant-app"><div class="root" id="crx-root"><div></div></div></div></template></div><div class="glasp-extension-toaster" style="display: block; width: 320px; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; top: 40px; right: 24px; z-index: 9999;"><template shadowrootmode="open"><div class="glasp-extension" style="font-family: Inter;"></div></template></div><div class="glasp-extension" style="display: block; width: unset; margin: unset; padding: unset; border: unset; border-radius: unset; outline: unset; background-color: unset; box-shadow: unset; position: fixed; bottom: 16px; right: 16px; z-index: 9999;"><template shadowrootmode="open"><div class="glasp-extension" style="font-family: Inter;"></div></template></div></body></html>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-65X4NEWSNB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-65X4NEWSNB');
+    </script>
+  </body>
+</html>
